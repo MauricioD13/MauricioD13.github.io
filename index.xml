@@ -6,8 +6,23 @@
     <description>Recent content on Tech and Coffee</description>
     <generator>Hugo -- 0.136.4</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Oct 2024 16:48:03 +0200</lastBuildDate>
     <atom:link href="https://tech-mauricio.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://tech-mauricio.me/about/</link>
+      <pubDate>Tue, 22 Oct 2024 16:48:03 +0200</pubDate>
+      <guid>https://tech-mauricio.me/about/</guid>
+      <description>&lt;h1 id=&#34;mauricio-cuello&#34;&gt;Mauricio Cuello&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://tech-mauricio.me/profile.jpg&#34; alt=&#34;profile&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ciberseguridad | Consultor Cloud&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Madrid, Spain&lt;br&gt;
+Phone: +34-648413525&lt;br&gt;
+Email: &lt;a href=&#34;mailto:mdavidcuello@gmail.com&#34;&gt;mdavidcuello@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;about-me&#34;&gt;About Me&lt;/h2&gt;
+&lt;p&gt;Ingeniero Electrónico apasionado por la nube (AWS, Azure) y la ciberseguridad, con experiencia en evaluaciones de seguridad PCI DSS. Hábil en el diseño e implementación de infraestructuras de red seguras y en el uso de herramientas de monitoreo de seguridad. Dominio de Python, C, bases de datos SQL y administración de servidores Linux. Experiencia reciente en el aprendizaje y aplicación de Terraform para proyectos de despliegue en AWS, mejorando la eficiencia y escalabilidad de las infraestructuras cloud. Colaborador, comunicativo y altamente comprometido con la innovación y la excelencia técnica.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AWS History 0 - The Hidden Costs of Poor Cloud Management</title>
       <link>https://tech-mauricio.me/projects/aws_history_0/</link>

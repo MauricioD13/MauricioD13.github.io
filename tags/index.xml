@@ -4,10 +4,45 @@
     <title>Tags on Tech and Coffee</title>
     <link>https://tech-mauricio.me/tags/</link>
     <description>Recent content in Tags on Tech and Coffee</description>
-    <generator>Hugo -- 0.136.5</generator>
+    <generator>Hugo -- 0.144.1</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 30 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tech-mauricio.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ansible</title>
+      <link>https://tech-mauricio.me/tags/ansible/</link>
+      <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://tech-mauricio.me/tags/ansible/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevOps</title>
+      <link>https://tech-mauricio.me/tags/devops/</link>
+      <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://tech-mauricio.me/tags/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming</title>
+      <link>https://tech-mauricio.me/tags/programming/</link>
+      <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://tech-mauricio.me/tags/programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://tech-mauricio.me/tags/python/</link>
+      <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://tech-mauricio.me/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Terraform</title>
+      <link>https://tech-mauricio.me/tags/terraform/</link>
+      <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://tech-mauricio.me/tags/terraform/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AWS</title>
       <link>https://tech-mauricio.me/tags/aws/</link>
@@ -48,20 +83,6 @@
       <link>https://tech-mauricio.me/tags/cipher/</link>
       <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
       <guid>https://tech-mauricio.me/tags/cipher/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Programming</title>
-      <link>https://tech-mauricio.me/tags/programming/</link>
-      <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>https://tech-mauricio.me/tags/programming/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>https://tech-mauricio.me/tags/python/</link>
-      <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>https://tech-mauricio.me/tags/python/</guid>
       <description></description>
     </item>
   </channel>

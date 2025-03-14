@@ -2,52 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://tech-mauricio.me/es/categories/</loc>
+    <loc>https://mauriciod13.github.io/es/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://tech-mauricio.me/categories/"
+                href="https://mauriciod13.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://tech-mauricio.me/es/categories/"
+                href="https://mauriciod13.github.io/es/categories/"
                 />
   </url><url>
-    <loc>https://tech-mauricio.me/es/series/</loc>
+    <loc>https://mauriciod13.github.io/es/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://tech-mauricio.me/series/"
+                href="https://mauriciod13.github.io/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://tech-mauricio.me/es/series/"
+                href="https://mauriciod13.github.io/es/series/"
                 />
   </url><url>
-    <loc>https://tech-mauricio.me/es/tags/</loc>
+    <loc>https://mauriciod13.github.io/es/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://tech-mauricio.me/tags/"
+                href="https://mauriciod13.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://tech-mauricio.me/es/tags/"
+                href="https://mauriciod13.github.io/es/tags/"
                 />
   </url><url>
-    <loc>https://tech-mauricio.me/es/</loc>
+    <loc>https://mauriciod13.github.io/es/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://tech-mauricio.me/"
+                href="https://mauriciod13.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://tech-mauricio.me/es/"
+                href="https://mauriciod13.github.io/es/"
                 />
   </url>
 </urlset>

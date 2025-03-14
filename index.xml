@@ -2,54 +2,54 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tech and Coffee</title>
-    <link>https://tech-mauricio.me/</link>
+    <link>https://mauriciod13.github.io/</link>
     <description>Recent content on Tech and Coffee</description>
-    <generator>Hugo -- 0.144.1</generator>
+    <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Feb 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://tech-mauricio.me/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mauriciod13.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Automating a Recipe Server Deployment: FastAPI, Terraform, and Ansible</title>
-      <link>https://tech-mauricio.me/projects/project_recipe_server/</link>
+      <link>https://mauriciod13.github.io/projects/project_recipe_server/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://tech-mauricio.me/projects/project_recipe_server/</guid>
+      <guid>https://mauriciod13.github.io/projects/project_recipe_server/</guid>
       <description>This article explains how to build a server with FastAPI, Terraform, and Ansible in a automation workflow.It tell you about AWS provisioning, secure configuration with Ansible Vault, and app deployment with systemd services.</description>
     </item>
     <item>
       <title>AWS History 0 - The Hidden Costs of Poor Cloud Management</title>
-      <link>https://tech-mauricio.me/projects/aws_history_0/</link>
+      <link>https://mauriciod13.github.io/projects/aws_history_0/</link>
       <pubDate>Fri, 30 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://tech-mauricio.me/projects/aws_history_0/</guid>
+      <guid>https://mauriciod13.github.io/projects/aws_history_0/</guid>
       <description>The beginning of some histories about AWS cloud. This one is about EC2, S3 configuration and a little bit of Linux server management</description>
     </item>
     <item>
       <title>AWS History 1 - An attack and Three tier solution</title>
-      <link>https://tech-mauricio.me/projects/aws_history_1/</link>
+      <link>https://mauriciod13.github.io/projects/aws_history_1/</link>
       <pubDate>Fri, 30 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://tech-mauricio.me/projects/aws_history_1/</guid>
+      <guid>https://mauriciod13.github.io/projects/aws_history_1/</guid>
       <description>The beginning of some histories about AWS cloud. This one is about EC2, S3 configuration and a little bit of Linux server management</description>
     </item>
     <item>
       <title>Our secret messages: Hill Cipher</title>
-      <link>https://tech-mauricio.me/posts/our_secret_messages_hill_cipher/</link>
+      <link>https://mauriciod13.github.io/posts/our_secret_messages_hill_cipher/</link>
       <pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>https://tech-mauricio.me/posts/our_secret_messages_hill_cipher/</guid>
+      <guid>https://mauriciod13.github.io/posts/our_secret_messages_hill_cipher/</guid>
       <description>Following the previous article about Caesar cypher, here is a more complicated cypher invented by Lester Hill in 1929 using linear algebra to encrypt the messages.</description>
     </item>
     <item>
       <title>Our secret messages: Caesar Cipher</title>
-      <link>https://tech-mauricio.me/posts/our_secret_messages_caesar_cipher/</link>
+      <link>https://mauriciod13.github.io/posts/our_secret_messages_caesar_cipher/</link>
       <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
-      <guid>https://tech-mauricio.me/posts/our_secret_messages_caesar_cipher/</guid>
+      <guid>https://mauriciod13.github.io/posts/our_secret_messages_caesar_cipher/</guid>
       <description>The ciphers are the base of our security in the internet but not just the internet, in the ancient world already were the need to pass secret messages. This article is a short explanation of Caesar cypher.</description>
     </item>
     <item>
       <title>About</title>
-      <link>https://tech-mauricio.me/about/</link>
+      <link>https://mauriciod13.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tech-mauricio.me/about/</guid>
+      <guid>https://mauriciod13.github.io/about/</guid>
       <description>&lt;h1 id=&#34;mauricio-cuello&#34;&gt;Mauricio Cuello&lt;/h1&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://tech-mauricio.me/profile.jpg&#34; alt=&#34;profile&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://mauriciod13.github.io/profile.jpg&#34; alt=&#34;profile&#34;  /&gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Ciberseguridad | Consultor Cloud&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Madrid, Spain&lt;/p&gt;

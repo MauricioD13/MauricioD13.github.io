@@ -9,16 +9,16 @@
 <meta name="keywords" content="Python, Programming, Ansible, Terraform, DevOps">
 <meta name="description" content="This article explains how to build a server with FastAPI, Terraform, and Ansible in a automation workflow.It tell you about AWS provisioning, secure configuration with Ansible Vault, and app deployment with systemd services.">
 <meta name="author" content="">
-<link rel="canonical" href="https://tech-mauricio.me/projects/project_recipe_server/">
+<link rel="canonical" href="https://mauriciod13.github.io/projects/project_recipe_server/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.bac051124c13531e2e9393d9dfd54135b06a838ac3e2456e00c392fa1892c8bf.css" integrity="sha256-usBREkwTUx4uk5PZ39VBNbBqg4rD4kVuAMOS&#43;hiSyL8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://tech-mauricio.me/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://tech-mauricio.me/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://tech-mauricio.me/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://tech-mauricio.me/apple-touch-icon.png">
-<link rel="mask-icon" href="https://tech-mauricio.me/safari-pinned-tab.svg">
+<link rel="icon" href="https://mauriciod13.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mauriciod13.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mauriciod13.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mauriciod13.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mauriciod13.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://tech-mauricio.me/projects/project_recipe_server/">
+<link rel="alternate" hreflang="en" href="https://mauriciod13.github.io/projects/project_recipe_server/">
 <noscript>
     <style>
         #theme-toggle,
@@ -58,13 +58,13 @@
 </noscript><meta property="og:title" content="Automating a Recipe Server Deployment: FastAPI, Terraform, and Ansible" />
 <meta property="og:description" content="This article explains how to build a server with FastAPI, Terraform, and Ansible in a automation workflow.It tell you about AWS provisioning, secure configuration with Ansible Vault, and app deployment with systemd services." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://tech-mauricio.me/projects/project_recipe_server/" />
-<meta property="og:image" content="https://tech-mauricio.me/recipes_server/cover_recipe_server.jpg" /><meta property="article:section" content="projects" />
+<meta property="og:url" content="https://mauriciod13.github.io/projects/project_recipe_server/" />
+<meta property="og:image" content="https://mauriciod13.github.io/recipes_server/cover_recipe_server.jpg" /><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2025-02-23T00:00:00+00:00" />
 <meta property="article:modified_time" content="2025-02-23T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://tech-mauricio.me/recipes_server/cover_recipe_server.jpg" />
+<meta name="twitter:image" content="https://mauriciod13.github.io/recipes_server/cover_recipe_server.jpg" />
 <meta name="twitter:title" content="Automating a Recipe Server Deployment: FastAPI, Terraform, and Ansible"/>
 <meta name="twitter:description" content="This article explains how to build a server with FastAPI, Terraform, and Ansible in a automation workflow.It tell you about AWS provisioning, secure configuration with Ansible Vault, and app deployment with systemd services."/>
 
@@ -78,13 +78,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Projects",
-      "item": "https://tech-mauricio.me/projects/"
+      "item": "https://mauriciod13.github.io/projects/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Automating a Recipe Server Deployment: FastAPI, Terraform, and Ansible",
-      "item": "https://tech-mauricio.me/projects/project_recipe_server/"
+      "item": "https://mauriciod13.github.io/projects/project_recipe_server/"
     }
   ]
 }
@@ -102,18 +102,18 @@
   "articleBody": "Table of Contents ’''\nAutomating a Recipe Server Deployment: FastAPI, Terraform, and Ansible in a DevSecOps Workflow Project Overview - Directory tree Network Diagram FastAPI Administration Node Setup Terraform provisioning Ansible Vault Ansible playbook Install dependencies and packages Linux configurations MySQL Configuration Python packages and FastAPI app Automation with bash Conclusion Resources ’'' Last year, I advanced my expertise in cloud technologies—including Ansible, Terraform, and AWS—with the goal of mastering Cloud Security and DevSecOps. This project, a FastAPI-based Recipe Server, became my hands-on experiment to automate end-to-end deployment, from infrastructure provisioning to application setup, while prioritizing security best practices.\nWhile using FastAPI for work-related tasks, I challenged myself: “Could I fully automate this deployment using Ansible for configuration management and Terraform for cloud infrastructure?” Though simpler solutions like serverless deployments or Docker containers exist, I chose this path after hearing a powerful statement from cybersecurity educator: “Security begins with mastery—learn a technology inside-out, then secure it.” This philosophy reshaped my approach. Instead of chasing surface-level cybersecurity skills, I dove deeper into cloud architecture and deployment workflows, ensuring I could build and secure them effectively. GITHUB REPO: Intro to DevOps\nProject Overview The goal of this project was to automate the deployment of a small FastAPI application that manages recipes. Below is an outline of how everything was set up:\nAdministration Node: An Ubuntu Server 22.04 LTS virtual machine to run Ansible and Terraform. Terraform for Provisioning: A Terraform script to create and configure the necessary AWS resources (an EC2 instance, a VPC, a subnet, internet gateway, and routing table). Ansible for Configuration: An Ansible playbook to install and configure all required software on the EC2 instance, including MySQL, Python, and other dependencies. FastAPI Application: A simple FastAPI app (with SQLAlchemy for database operations) that stores recipes, associated with a user ID. (For simplicity, there is no authentication system.) Directory tree The ansible and terraform directories separate IaC configurations, while app houses the FastAPI codebase.\nFastAPI_MySQL/ ├── ansible ├── app │ ├── __pycache__ │ ├── static │ ├── templates ├── docker └── terraform Network Diagram FastAPI I choose FastAPI for its speed, ease of use, and built-in support for modern Python features. Compared to Flask, FastAPI felt more intuitive and allowed me to focus on the core functionality of the recipe app without getting bogged down in boilerplate code. On the other hand,I enjoy writing in Python, and after trying Flask and Django, I wanted to work with FastAPI. The development experience was straightforward and fast. The application itself is a simple recipe manager, storing recipes under a user ID. I chose not to implement authentication for this version, to keep the focus on the automation aspects. SQLAlchemy serves as the ORM layer for database interactions.\nAdministration Node Setup The administration node served as the control center for deploying and managing the entire infrastructure. By centralizing the deployment process, I could ensure consistency and security across all components. On the Ubuntu Server 22.04 LTS virtual machine, I followed these steps:\nClone the GitHub Repository: The repository contains: Bash scripts for installing dependencies and deploying the app. An Ansible playbook for configuring the server. Terraform files for provisioning the AWS infrastructure. The Python/FastAPI application. Install tools: Terraform: Follow HashiCorp’s installation guide. AWS CLI: From AWS documentation or distribution packages. Ansible: Installed via pipx to keep it isolated. Other Dependencies: For instance, passlib is needed for password hashing in Ansible tasks. Configure AWS Credentials: Using the AWS CLI configure the authentication credentials to use the AWS resources. I use the option profile to avoid confusion in the future. aws configure --profile personal export AWS_PROFILE=personal 4.Create an EC2 Key Pair: I chose to manually create the key pair to avoid unnecessary complexity with Terraform’s key management and the associated SSH commands. While I am aware that reusing the same key for multiple EC2 instances is not a best practice, this project is strictly for non-production purposes, so key rotation and stringent security measures are less critical here.\naws ec2 create-key-pair --key-name tf_key | jq -r \".KeyMaterial\" \u003e ~/.ssh/ec2_key.pem chmod 400 ~/.ssh/ec2_key.pem ssh-add ~/.ssh/ec2_key.pem Then the script installed_tools.sh uses apt to install the necessary packages. After that, I used pipx to install Ansible. This approach creates isolated environments in the CLI, and the inject command is used for adding additional dependencies. It’s particularly important to install the passlib package for password hashing when creating a new server user, following best practices by storing only the hash rather than the actual password. Finally, I installed Terraform according to HashiCorp’s documentation, as well as the AWS CLI.\nTerraform provisioning Terraform was the ideal choice for provisioning the infrastructure because of its ability to manage cloud resources declaratively. By defining the infrastructure as code, I could easily replicate the setup in different environments, scale or destroy it as needed. Terraform will provision:\nAn EC2 instance in a public subnet. A VPC, subnet, internet gateway, route table, and security group. Terraform’s output includes the public IP of the EC2 instance. This IP is stored in the INSTANCE_IP variable, which is used to update the Ansible inventory file via a sed command. Ansible Vault To protect sensitive information like database credentials and user passwords, I used Ansible Vault to encrypt the data. This ensured that even if the playbook was exposed, the sensitive information remained secure. To handle sensitive variables, I used Ansible Vault to encrypt the data needed in the playbook, such as the username, database credentials, and other confidential information.\nansible-vault create vars.yml After create the file the editor vim is opened to configure all the variables on the vault. This is a template on which variables are needed to run the playbook:\nusername: \"fastapi\" user_password: \"fastapi\" password: \"fastapi\" db_user: \"fastapi\" db_pass: \"fastapi\" db_name: \"recipes\" db_host: \"localhost\" dependencies_packages: - python3-pip - python3-dev - python3-setuptools - python3-venv - python3-passlib - mysql-server - mysql-client - python3-mysqldb - libmysqlclient-dev - libpwquality-tools Ansible playbook The Ansible playbook was the backbone of the deployment process, automating everything from dependency installation to MySQL configuration. By breaking down the tasks into manageable steps, I could ensure that each component was set up correctly and securely.\n1. Install dependencies and packages After configuring SSH and setting up the infrastructure on the administration node, it was time to run the Ansible playbook to prepare the environment for running the FastAPI framework. The first task was to update the package manager’s cache and install the necessary software, such as Python, pip, python3-venv and MySQL.\n2. Linux configurations Next, a user group and a deployment user account were created, followed by implementing security measures like setting a strong password policy, modifying SSH settings, and configuring and enabling the UFW firewall.\n3. MySQL Configuration The next step involved configuring MySQL: starting the MySQL service, creating a MySQL user, setting up the database, and enabling remote login. To complete this step, the notify attribute was used to trigger a handler that restarts the MySQL service.\n4. Python packages and FastAPI app Finally, the Python app setup was addressed. A directory for the application was created, the application files were copied over, and a virtual environment was created. The dependencies for FastAPI and its ORM, SQLAlchemy, were installed. A systemd service file was then created to manage the application, and the service was started and enabled to ensure it runs on boot.\nAutomation with bash To deploy all the project I use to bash script, the previously mention install_tools.sh and the other one that automate the deployment named deploy.sh and it does the following:\nInitializing Terraform Applying Terraform configuration Getting EC2 instance IP Waiting for instance to be ready Verifying SSH key Creating Ansible inventory Running Ansible playbook Finally, after all this steps the script prints the URL that is the instance IP on the port 8000.\nConclusion This project was a significant step in my journey toward mastering cloud security and DevSecOps. By automating the deployment of a FastAPI-based recipe server using Ansible and Terraform, I gained hands-on experience in infrastructure as code, security best practices, and cloud provisioning. The challenges I faced, such as configuring secure SSH access and managing sensitive data with Ansible Vault, taught me valuable lessons that I can apply to future projects.\nResources Hashicorp Terraform Install Docs FastAPI Documentation SQLAlchemy documentation Ansible documentation ",
   "wordCount" : "1377",
   "inLanguage": "en",
-  "image":"https://tech-mauricio.me/recipes_server/cover_recipe_server.jpg","datePublished": "2025-02-23T00:00:00Z",
+  "image":"https://mauriciod13.github.io/recipes_server/cover_recipe_server.jpg","datePublished": "2025-02-23T00:00:00Z",
   "dateModified": "2025-02-23T00:00:00Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://tech-mauricio.me/projects/project_recipe_server/"
+    "@id": "https://mauriciod13.github.io/projects/project_recipe_server/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Tech and Coffee",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://tech-mauricio.me/favicon.ico"
+      "url": "https://mauriciod13.github.io/favicon.ico"
     }
   }
 }
@@ -135,7 +135,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://tech-mauricio.me/" accesskey="h" title="Tech and Coffee (Alt + H)">Tech and Coffee</a>
+            <a href="https://mauriciod13.github.io/" accesskey="h" title="Tech and Coffee (Alt + H)">Tech and Coffee</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -159,7 +159,7 @@
                 </button>
                 <ul class="lang-switch"><li>|</li>
                     <li>
-                        <a href="https://tech-mauricio.me/es/" title="Spanish"
+                        <a href="https://mauriciod13.github.io/es/" title="Spanish"
                             aria-label="Spanish">Es</a>
                     </li>
                 </ul>
@@ -167,17 +167,17 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://tech-mauricio.me/posts/" title="Posts">
+                <a href="https://mauriciod13.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="https://tech-mauricio.me/projects/" title="Projects">
+                <a href="https://mauriciod13.github.io/projects/" title="Projects">
                     <span>Projects</span>
                 </a>
             </li>
             <li>
-                <a href="https://tech-mauricio.me/categories/" title="Categories">
+                <a href="https://mauriciod13.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
@@ -196,7 +196,7 @@
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="https://tech-mauricio.me/recipes_server/cover_recipe_server.jpg" alt="">
+<figure class="entry-cover"><img loading="eager" src="https://mauriciod13.github.io/recipes_server/cover_recipe_server.jpg" alt="">
         
 </figure>
   <div class="post-content"><h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
@@ -374,14 +374,14 @@ To handle sensitive variables, I used Ansible Vault to encrypt the data needed i
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://tech-mauricio.me/tags/python/">Python</a></li>
-      <li><a href="https://tech-mauricio.me/tags/programming/">Programming</a></li>
-      <li><a href="https://tech-mauricio.me/tags/ansible/">Ansible</a></li>
-      <li><a href="https://tech-mauricio.me/tags/terraform/">Terraform</a></li>
-      <li><a href="https://tech-mauricio.me/tags/devops/">DevOps</a></li>
+      <li><a href="https://mauriciod13.github.io/tags/python/">Python</a></li>
+      <li><a href="https://mauriciod13.github.io/tags/programming/">Programming</a></li>
+      <li><a href="https://mauriciod13.github.io/tags/ansible/">Ansible</a></li>
+      <li><a href="https://mauriciod13.github.io/tags/terraform/">Terraform</a></li>
+      <li><a href="https://mauriciod13.github.io/tags/devops/">DevOps</a></li>
     </ul>
 <nav class="paginav">
-  <a class="next" href="https://tech-mauricio.me/projects/aws_history_0/">
+  <a class="next" href="https://mauriciod13.github.io/projects/aws_history_0/">
     <span class="title">Next »</span>
     <br>
     <span>AWS History 0 - The Hidden Costs of Poor Cloud Management</span>
@@ -392,7 +392,7 @@ To handle sensitive variables, I used Ansible Vault to encrypt the data needed i
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Automating a Recipe Server Deployment: FastAPI, Terraform, and Ansible on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2ftech-mauricio.me%2fprojects%2fproject_recipe_server%2f&amp;title=Automating%20a%20Recipe%20Server%20Deployment%3a%20FastAPI%2c%20Terraform%2c%20and%20Ansible&amp;summary=Automating%20a%20Recipe%20Server%20Deployment%3a%20FastAPI%2c%20Terraform%2c%20and%20Ansible&amp;source=https%3a%2f%2ftech-mauricio.me%2fprojects%2fproject_recipe_server%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmauriciod13.github.io%2fprojects%2fproject_recipe_server%2f&amp;title=Automating%20a%20Recipe%20Server%20Deployment%3a%20FastAPI%2c%20Terraform%2c%20and%20Ansible&amp;summary=Automating%20a%20Recipe%20Server%20Deployment%3a%20FastAPI%2c%20Terraform%2c%20and%20Ansible&amp;source=https%3a%2f%2fmauriciod13.github.io%2fprojects%2fproject_recipe_server%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -406,7 +406,7 @@ To handle sensitive variables, I used Ansible Vault to encrypt the data needed i
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://tech-mauricio.me/">Tech and Coffee</a></span> · 
+        <span>&copy; 2025 <a href="https://mauriciod13.github.io/">Tech and Coffee</a></span> · 
 
     <span>
         Powered by

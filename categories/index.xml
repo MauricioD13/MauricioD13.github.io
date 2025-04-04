@@ -6,8 +6,36 @@
     <description>Recent content in Categories on Tech and Coffee</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mauriciod13.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS</title>
+      <link>https://mauriciod13.github.io/categories/aws/</link>
+      <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://mauriciod13.github.io/categories/aws/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud</title>
+      <link>https://mauriciod13.github.io/categories/cloud/</link>
+      <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://mauriciod13.github.io/categories/cloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Storage</title>
+      <link>https://mauriciod13.github.io/categories/storage/</link>
+      <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://mauriciod13.github.io/categories/storage/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Well-Architected</title>
+      <link>https://mauriciod13.github.io/categories/well-architected/</link>
+      <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://mauriciod13.github.io/categories/well-architected/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Automation</title>
       <link>https://mauriciod13.github.io/categories/automation/</link>
@@ -34,20 +62,6 @@
       <link>https://mauriciod13.github.io/categories/terraform/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
       <guid>https://mauriciod13.github.io/categories/terraform/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AWS</title>
-      <link>https://mauriciod13.github.io/categories/aws/</link>
-      <pubDate>Fri, 30 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://mauriciod13.github.io/categories/aws/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cloud</title>
-      <link>https://mauriciod13.github.io/categories/cloud/</link>
-      <pubDate>Fri, 30 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://mauriciod13.github.io/categories/cloud/</guid>
       <description></description>
     </item>
     <item>

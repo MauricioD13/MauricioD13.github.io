@@ -1,8 +1,8 @@
 {
   "main": [
     {
-      "name": "Features",
-      "url": "/features"
+      "name": "Services",
+      "url": "/services"
     },
     {
       "name": "Pricing",
@@ -17,8 +17,8 @@
       "url": "/integrations"
     },
     {
-      "name": "Case Studies",
-      "url": "/case-study"
+      "name": "Projects",
+      "url": "/projects"
     },
     {
       "name": "Contact",
@@ -52,8 +52,8 @@
   ],
   "footer_resource": [
     {
-      "name": "Case Studies",
-      "url": "/case-study"
+      "name": "Projects",
+      "url": "/projects"
     },
     {
       "name": "Elements",

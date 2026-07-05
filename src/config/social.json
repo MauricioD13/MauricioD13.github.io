@@ -1,14 +1,14 @@
 {
   "main": [
     {
-      "name": "instagram",
-      "icon": "FaInstagram",
-      "link": "https://www.instagram.com/"
+      "name": "Github",
+      "icon": "FaGithub",
+      "link": "https://github.com/MauricioD13"
     },
     {
-      "name": "youtube",
-      "icon": "FaYoutube",
-      "link": "https://www.youtube.com/"
+      "name": "LinkedIn",
+      "icon": "FaLinkedin",
+      "link": "https://www.linkedin.com/in/mauricio-cuello-/"
     }
   ]
 }

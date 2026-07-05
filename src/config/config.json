@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "Automark",
+    "title": "TribuOps",
     "base_url": "https://automark-astro.vercel.app",
     "base_path": "/",
     "trailing_slash": false,
@@ -8,7 +8,7 @@
     "logo": "/images/logo.svg",
     "logo_width": "160",
     "logo_height": "45",
-    "logo_text": "Automark"
+    "logo_text": "TribuOps"
   },
   "settings": {
     "sticky_header": true
@@ -18,8 +18,8 @@
     "checklist_form_action": "#",
     "apply_form_action": "#",
     "copyright": "Copyright &copy; 2026 <strong><a target=\"_blank\" href=\"https://themefisher.com/\">Themefisher</a></strong> All Rights Reserved",
-    "footer_tagline": "Empowering Marketing businesses through intelligent automation.",
-    "footer_email": "contact@Automark.com",
+    "footer_tagline": "Empowering IT teams through intelligent automation.",
+    "footer_email": "info@tribuops.com",
     "footer_phone": "(+1) 165-320-0102"
   },
   "navigation_button": {
@@ -32,8 +32,8 @@
     "gtm_id": "GTM-XXXXXX"
   },
   "metadata": {
-    "meta_author": "Automark",
+    "meta_author": "TribuOps",
     "meta_image": "/images/og-image.png",
-    "meta_description": "The all-in-one marketing and sales automation platform"
+    "meta_description": "The all-in-one IT and technology automation platform"
   }
 }

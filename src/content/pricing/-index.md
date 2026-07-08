@@ -1,115 +1,107 @@
 ---
 title: "Pricing"
-meta_title: "Pricing - All-In-One Local Business Software"
-description: "Simple, transparent pricing for every stage of your local business growth."
+meta_title: "Pricing - Cloud Security & Administration Services"
+description: "Reference pricing for cloud security assessments and ongoing cloud administration services."
 image: ""
 draft: false
-
 page_header:
   badge: "Pricing"
-  title: "Pricing Built For Local Business Growth"
-  content: "Start your free 14-day trial, scale as you grow. No contracts. Cancel anytime."
-
+  title: "Pricing Built For Secure, Well-Run Cloud Infrastructure"
+  content: "Reference pricing shown below. Final scope and cost depend on your environment size and complexity — book a consultation for an accurate quote."
 toggler:
   monthly_label: "Monthly"
   yearly_label: "Yearly"
-
 plans:
-  - title: "Essentials"
-    price: "97"
-    yearly_price: "970"
+  - title: "Assessment"
+    price: "1,500"
+    yearly_price: "15,000"
     is_featured: false
     button:
       enable: true
-      label: "Start Free Trial"
+      label: "Book a Consultation"
       link: "/contact"
-    description: "The core necessities for organizing your leads and capturing more business."
+    description: "A one-time cloud security posture assessment to identify and prioritize risk."
     features:
-      - label: "Unified Lead Inbox"
+      - label: "CSPM / Configuration Review"
         included: true
-      - label: "Missed Call Auto-Responder"
+      - label: "IAM & Access Audit"
         included: true
-        tooltip: "Automatically text back missed calls."
-      - label: "Autopilot Review Generator"
+        tooltip: "Identify over-privileged roles and unused access."
+      - label: "Findings & Remediation Report"
         included: true
-      - label: "24/7 Appointment Scheduler"
+      - label: "Infrastructure as Code Setup"
         included: false
-      - label: "Automated Follow-Up Campaigns"
+      - label: "Ongoing Monitoring"
         included: false
-
-  - title: "Growth"
-    price: "297"
-    yearly_price: "2970"
+  - title: "Managed Cloud"
+    price: "2,500"
+    yearly_price: "25,000"
     is_featured: true
     offer_text: Most Popular
     button:
       enable: true
-      label: "Start Free Trial"
+      label: "Book a Consultation"
       link: "/contact"
-    description: "Everything you need to put your business growth on complete autopilot."
+    description: "Ongoing cloud security and administration for teams that need a hands-on partner."
     features:
-      - label: "Unified Lead Inbox & Reviews"
+      - label: "Everything in Assessment"
         included: true
-      - label: "24/7 Appointment Scheduler"
+      - label: "Infrastructure as Code (Terraform)"
         included: true
-        tooltip: "Unlimited calendars and bookings."
-      - label: "Automated Follow-Up Campaigns"
+        tooltip: "Version-controlled, repeatable environments."
+      - label: "CI/CD Pipeline Management"
         included: true
-      - label: "High-Converting Websites & Funnels"
+      - label: "Runtime Monitoring & Alerting"
         included: true
-      - label: "Advanced API Integrations"
+      - label: "Multi-Cloud Coverage"
         included: false
-
-  - title: "Scale"
-    price: "497"
-    yearly_price: "4970"
+  - title: "Enterprise"
+    price: "Custom"
+    yearly_price: "Custom"
     is_featured: false
     button:
       enable: true
-      label: "Start Free Trial"
+      label: "Contact Us"
       link: "/contact"
-    description: "Total control and advanced tools to scale multiple locations seamlessly."
+    description: "Tailored engagements for organizations with complex, multi-cloud, or multi-team needs."
     features:
-      - label: "Everything in Growth"
+      - label: "Everything in Managed Cloud"
         included: true
-      - label: "Unlimited Social Media Posting"
+      - label: "Multi-Cloud Coverage (AWS, Azure, GCP)"
         included: true
-        tooltip: "Schedule content across all platforms."
-      - label: "Advanced API Integrations"
+        tooltip: "Unified security and administration across providers."
+      - label: "AI-SPM & Advanced Threat Detection"
         included: true
-      - label: "Multi-Location Support"
+      - label: "Compliance Support"
         included: true
-      - label: "Dedicated Account Manager"
+      - label: "Dedicated Engineer"
         included: true
-
 comparison:
   enable: true
   badge: "Plan Matrix"
   title: "Pricing Plans <strong>Comparison</strong>"
   headers:
     - label: "Features"
-    - label: "Essentials"
-    - label: "Growth"
-    - label: "Scale"
+    - label: "Assessment"
+    - label: "Managed Cloud"
+    - label: "Enterprise"
   rows:
-    - feature: "Monthly Price"
-      values: ["$97", "$297", "$497"]
-    - feature: "User Accounts"
-      values: ["3", "10", "Unlimited"]
-    - feature: "Unified Lead Inbox"
+    - feature: "Starting Price"
+      values: ["$1,500 (one-time)", "$2,500/mo", "Custom"]
+    - feature: "Cloud Accounts Covered"
+      values: ["1", "Up to 3", "Unlimited"]
+    - feature: "CSPM / Configuration Review"
       values: [true, true, true]
-    - feature: "Missed Call Auto-Responder"
+    - feature: "IAM & Access Audit"
       values: [true, true, true]
-    - feature: "Autopilot Review Generator"
-      values: [true, true, true]
-    - feature: "24/7 Appointment Scheduler"
+    - feature: "Infrastructure as Code"
       values: [false, true, true]
-    - feature: "Website & Funnel Builder"
+    - feature: "CI/CD Pipeline Management"
       values: [false, true, true]
-    - feature: "Automated SMS/Email Campaigns"
+    - feature: "Runtime Threat Detection"
       values: [false, true, true]
-    - feature: "Multi-Location Management"
+    - feature: "Multi-Cloud Coverage"
       values: [false, false, true]
     - feature: "Support"
-      values: ["Email Support", "Priority Support", "Dedicated Manager"]
+      values: ["Email Support", "Priority Support", "Dedicated Engineer"]
 ---

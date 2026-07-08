@@ -63,6 +63,14 @@ const aboutCollection = defineCollection({
         }),
       ),
     }),
+    skills: z
+      .array(
+        z.object({
+          category: z.string(),
+          items: z.array(z.object({ name: z.string(), icon: z.string() })),
+        }),
+      )
+      .optional(),
   }),
 });
 
@@ -320,10 +328,11 @@ const pricingCollection = defineCollection({
   }),
 });
 
-const caseStudyCollection = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/case-study" }),
+const projectsCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/projects" }),
   schema: z.object({
     ...commonFields,
+    category: z.enum(["client", "personal"]).default("client"),
     page_header: z
       .object({
         badge: z.string().optional(),
@@ -604,7 +613,7 @@ export const collections = {
   homepage: homepageCollection,
   features: featuresCollection,
   pricing: pricingCollection,
-  caseStudy: caseStudyCollection,
+  projects: projectsCollection,
   careers: careersCollection,
   integrations: integrationsCollection,
   ctaSection: ctaSectionCollection,

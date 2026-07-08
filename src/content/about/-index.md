@@ -1,76 +1,86 @@
 ---
-title: "About Us"
-meta_title: "About Us - All-In-One Local Business Software"
-description: "Your System-Driven Growth Partner."
+title: "About Me"
+meta_title: "About Mauricio Cuello - Cloud Security & AWS Infrastructure Consultant"
+description: "Mauricio Cuello, Cloud Security & AWS Infrastructure Consultant."
 image: ""
 draft: false
 
 page_header:
-  title: "Your System-Driven <strong>Growth Partner.</strong>"
-  subtitle: "We believe local businesses shouldn't have to hire a full-time IT department just to get more customers. We built this platform to put your growth on autopilot."
+  title: "Hi, I'm Mauricio Cuello — <strong>Cloud Security & AWS Infrastructure Consultant</strong>"
+  subtitle: "I'm the engineer behind TribuOps. I work directly with clients on AWS infrastructure administration, cloud security hardening, and CI/CD automation — no account managers, no hand-offs, just the person doing the work."
   image: "/images/about_hero.png"
 
 stats:
-  enable: true
-  items:
-    - value: "10,000+"
-      label: "Local Businesses Served"
-    - value: "5M+"
-      label: "Leads Captured"
-    - value: "24/7"
-      label: "Automated Workflows"
-    - value: "99%"
-      label: "Platform Uptime"
+  enable: false
+  items: []
 
 our_team:
-  enable: true
-  badge: "Our Team"
-  title: "Meet Our <strong>Team Of Experts</strong>"
-  members:
-    - image: "/images/peoples/Profile Image.png"
-      name: "Josh Wangombe"
-      role: "Co-Founder & CTO"
-    - image: "/images/peoples/Profile Image-1.png"
-      name: "Daniel Jenson"
-      role: "Co-Founder & CEO"
-    - image: "/images/peoples/Profile Image-2.png"
-      name: "Toun Aalbers"
-      role: "Co-Founder & CTO"
-    - image: "/images/peoples/Profile Image-3.png"
-      name: "Peter van Ursel"
-      role: "Customer Success Director"
+  enable: false
+  title: "Meet Our Team"
+  members: []
 
 core_values:
   enable: true
-  badge: "Our Core Mission"
-  title: "Empowering Local Businesses to <strong>Thrive and Scale</strong>"
-  subtitle: "We replace the outdated, scattered tools with one powerful platform, so you can focus on what matters most: serving your clients and customers."
+  badge: "How I Work"
+  title: "Security-First, <strong>Built to Last</strong>"
+  subtitle: "Principles that guide every engagement, whether it's a one-time assessment or ongoing infrastructure administration."
   items:
-    - logo: "/images/icons/innovation.svg"
-      title: "Simplicity First"
-      is_starred: false
     - logo: "/images/icons/security.svg"
-      title: "Bank-Level Security"
-      is_starred: false
-    - logo: "/images/icons/collaboration.svg"
-      title: "Local Focus"
-      is_starred: false
-    - logo: "/images/icons/result-driven.svg"
-      title: "Results-Driven Tools"
-      is_starred: false
-    - logo: "/images/icons/creativity.svg"
-      title: "Automated Growth"
+      title: "Security First"
       is_starred: true
     - logo: "/images/icons/innovation.svg"
-      title: "Client-Centric"
+      title: "Infrastructure as Code"
       is_starred: false
-    - logo: "/images/icons/membership.svg"
-      title: "No Hidden Fees"
+    - logo: "/images/icons/collaboration.svg"
+      title: "Direct Communication"
+      is_starred: false
+    - logo: "/images/icons/result-driven.svg"
+      title: "Results You Can Verify"
       is_starred: false
     - logo: "/images/icons/starred-folder.svg"
-      title: "Reliable Support"
+      title: "Documented, Auditable Work"
+      is_starred: false
+    - logo: "/images/icons/creativity.svg"
+      title: "Practical Over Theoretical"
+      is_starred: false
+    - logo: "/images/icons/membership.svg"
+      title: "No Vendor Lock-In"
       is_starred: false
     - logo: "/images/features-menu-icon.svg"
-      title: "Continuous Updates"
+      title: "Continuous Learning"
       is_starred: false
+
+skills:
+  - category: "Cloud & Infrastructure"
+    items:
+      - name: "AWS"
+        icon: "FaAws"
+      - name: "Terraform"
+        icon: "SiTerraform"
+      - name: "Amazon ECS"
+        icon: "FaServer"
+  - category: "Security"
+    items:
+      - name: "AWS WAF"
+        icon: "FaShieldHalved"
+      - name: "IAM & Least Privilege"
+        icon: "FaLock"
+      - name: "Security Groups"
+        icon: "FaNetworkWired"
+  - category: "CI/CD & Automation"
+    items:
+      - name: "Docker"
+        icon: "SiDocker"
+      - name: "GitHub Actions"
+        icon: "SiGithubactions"
+      - name: "AWS Lambda"
+        icon: "FaBolt"
+  - category: "Data & Observability"
+    items:
+      - name: "Amazon Athena"
+        icon: "FaDatabase"
+      - name: "Metabase"
+        icon: "SiMetabase"
+      - name: "Grafana"
+        icon: "SiGrafana"
 ---

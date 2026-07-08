@@ -1,162 +1,150 @@
 ---
 banner:
-  title: "The All-In-One Growth Software for <strong>Local Business Owners</strong>"
-  content: "The complete automated system designed to capture more leads, follow up instantly, and grow your local business - all in one place."
+  title: "Secure, Well-Architected <strong>Cloud Infrastructure</strong>"
+  content: "Cloud security and cloud administration built by engineers who live in AWS every day — from architecture and automation to threat detection and compliance."
   button_primary:
     enable: true
-    label: "Start Your 14-day Free Trial"
-    link: "/pricing"
+    label: "Book a Free Consultation"
+    link: "/contact"
   button_secondary:
     enable: true
-    label: "Book a Demo"
-    link: "/contact"
+    label: "Explore Our Services"
+    link: "/services"
 
 main_features:
   enable: true
-  title: "Are you losing real customers to the <strong>Follow-up Gap?</strong>"
-  content: "Stop wasting money on marketing if you can't respond fast enough. Our system ensures every lead gets immediate attention."
+  title: "Is Your Cloud Growing Faster Than Your <strong>Security & Ops?</strong>"
+  content: "Fast-moving cloud environments often outpace the security controls and operational discipline needed to run them safely. We close that gap."
   items:
-    - "Wasted Ad Spend"
-    - "Expensive 'Franken-stack' of tools"
-    - "Scattered Customer Data"
-    - "Missed Calls Costing Thousands"
-    - "Lost Leads to Competitors"
-    - "Slow Response Times"
+    - "Misconfigured Cloud Resources"
+    - "No Real-Time Threat Visibility"
+    - "Unmanaged IAM & Access Sprawl"
+    - "Manual, Error-Prone Deployments"
+    - "Compliance Gaps (CSPM, CWP, ASPM)"
+    - "Fragile, Undocumented Infrastructure"
 
 value_props:
   enable: true
-  title: "Replace Your Clunky Tools With A <strong>Smart, All-In-One System</strong>"
-  content: "Log in to a single powerful dashboard to manage everything seamlessly."
+  title: "Two Disciplines, <strong>One Trusted Partner</strong>"
+  content: "We combine deep cloud security expertise with hands-on infrastructure administration, so your environment is both protected and built to run well."
   items:
     - logo: "/images/value-proposition/values-icon-1.svg"
-      title: "Automated Customer Follow-Up"
+      title: "Cloud Security"
       list:
-        - "Missed Call Auto-Responder"
-        - "24/7 Appointment Scheduler"
-        - "Instant SMS & Email Follow-Up"
+        - "CSPM, CWP & AI-SPM Assessments"
+        - "Least-Privilege IAM & OIDC Design"
+        - "Threat Detection & Runtime Monitoring"
     - logo: "/images/value-proposition/values-icon-2.svg"
-      title: "Smart Customer Database"
+      title: "Cloud Development & Administration"
       list:
-        - "Unified Lead Inbox"
-        - "Smart Pipeline Manager"
-        - "Client Notes & History"
-    - logo: "/images/value-proposition/values-icon-3.svg"
-      title: "Autopilot Review Generator"
-      list:
-        - "Automated Review Requests"
-        - "Google & Facebook Integration"
-        - "Reputation Tracking"
-    - logo: "/images/value-proposition/values-icon-4.svg"
-      title: "High-Converting Websites"
-      list:
-        - "Drag-and-Drop Landing Pages"
-        - "Lead Capture Forms"
-        - "Web Chat Widgets"
+        - "Infrastructure as Code (Terraform/OpenTofu)"
+        - "Container Orchestration & CI/CD Automation"
+        - "AWS Architecture, Migration & Ongoing Ops"
 
 our_features:
   enable: true
-  title: "Everything You Need To Put Growth On <strong>Autopilot</strong>"
-  content: "From capturing the very first click to securing a 5-star review, we've got you covered."
+  title: "Full-Lifecycle Cloud Security & <strong>Administration</strong>"
+  content: "From the first architecture diagram to daily monitoring, we cover security and operations as one integrated discipline."
   items:
     - logo: "/images/features-menu-icon.svg"
-      title: "Automated Customer Follow-up"
-      is_starred: false
-    - logo: "/images/features-menu-icon.svg"
-      title: "Autopilot Review Generator"
-      is_starred: false
-    - logo: "/images/features-menu-icon.svg"
-      title: "Missed Call Auto-Responder"
-      is_starred: false
-    - logo: "/images/features-menu-icon.svg"
-      title: "24/7 Appointment Scheduler"
-      is_starred: false
-    - logo: "/images/features-menu-icon.svg"
-      title: "Unified Lead Inbox"
+      title: "Cloud Security Posture Assessment"
       is_starred: true
     - logo: "/images/features-menu-icon.svg"
-      title: "Smart Customer Database"
+      title: "IAM & Access Design"
       is_starred: false
     - logo: "/images/features-menu-icon.svg"
-      title: "High-Converting Websites"
+      title: "Infrastructure as Code"
       is_starred: false
     - logo: "/images/features-menu-icon.svg"
-      title: "Drag & Drop Forms"
+      title: "CI/CD Pipeline Automation"
       is_starred: false
     - logo: "/images/features-menu-icon.svg"
-      title: "Automated Text Campaigns"
+      title: "Container & Orchestration Management"
+      is_starred: false
+    - logo: "/images/features-menu-icon.svg"
+      title: "Runtime Threat Detection"
+      is_starred: false
+    - logo: "/images/features-menu-icon.svg"
+      title: "Multi-Cloud Security (AWS, Azure, GCP)"
+      is_starred: false
+    - logo: "/images/features-menu-icon.svg"
+      title: "Cloud Monitoring & Observability"
+      is_starred: false
+    - logo: "/images/features-menu-icon.svg"
+      title: "Ongoing Infrastructure Support"
       is_starred: false
 
 testimonial_quote:
   enable: true
-  title: "We know you didn't start your local business to become a full-time <strong>Software Engineer</strong>"
-  quote: "Before this system, I was losing half my leads simply because I couldn't get to my phone fast enough while on jobs. Now, the system handles the follow-up for me, and I've seen a 300% jump in bookings."
+  title: "You shouldn't have to choose between moving fast and staying <strong>secure</strong>"
+  quote: "Before working with TribuOps, we weren't sure what was actually exposed in our cloud accounts. Now we have a hardened, well-documented environment with real visibility — and a team that manages it, not just audits it."
 
 single_testimonial:
   enable: true
   stats:
-    - value: "10,000+"
-      label: "Lead Captured"
-    - value: "5x Faster"
-      label: "Response Time"
-    - value: "28hr/week"
-      label: "Hours Saved"
+    - value: "99.9%"
+      label: "Infrastructure Uptime"
+    - value: "100%"
+      label: "OIDC / Keyless CI-CD Adoption"
+    - value: "24/7"
+      label: "Security Monitoring"
   testimonial:
-    quote: "This all-in-one software is exactly what our local business needed. It completely eliminated our need for 4 other separate platforms and organized our entire customer pipeline."
+    quote: "TribuOps didn't just hand us a report — they rebuilt our IAM model, automated our deployments, and closed the security gaps we didn't know we had."
     avatar: "/images/avatar.png"
     name: "Ronald Richards"
-    company: "Local Services Co."
+    company: "Growing Tech Co."
 
 growth_process:
   enable: true
-  title: 'Your 3-Step Path to <strong class="italic">Automated Growth</strong>'
+  title: 'Your 3-Step Path to a <strong class="italic">Secure, Well-Run Cloud</strong>'
   items:
     - logo: "/images/value-proposition/values-icon-2.svg"
-      title: "1. Start Your Trial"
-      content: "Sign up for a free trial and experience the power of the platform for yourself. No credit card required."
+      title: "1. Assess"
+      content: "We evaluate your cloud posture, IAM configuration, and infrastructure to identify security and operational risks."
     - logo: "/images/value-proposition/values-icon-2.svg"
-      title: "2. Connect Your Business"
-      content: "Forward your calls, plug in your social accounts, and unify your inbox in a matter of clicks."
+      title: "2. Harden & Build"
+      content: "We remediate security gaps and implement secure, automated, infrastructure-as-code environments built to scale."
     - logo: "/images/value-proposition/values-icon-2.svg"
-      title: "3. Scale on Autopilot"
-      content: "Watch your calendar fill up and reviews come in automatically, so you can focus on serving your customers."
+      title: "3. Monitor & Manage"
+      content: "We provide ongoing administration, monitoring, and security oversight so your cloud stays protected as it grows."
   button:
     enable: true
-    label: "Start Your 14-Day Free Trial"
-    link: "/pricing"
+    label: "Book Your Free Consultation"
+    link: "/contact"
 
 integrations:
   enable: true
-  title: "Connect all your <strong>Applications</strong>"
+  title: "Secured & Managed On The <strong>Platforms You Trust</strong>"
   items:
-    - image: "/images/integrations/snapchat.png"
-      alt: "snapchat"
-    - image: "/images/integrations/fastapi.png"
-      alt: "fastapi"
-    - image: "/images/integrations/youtube.png"
-      alt: "youtube"
-    - image: "/images/integrations/airtable.png"
-      alt: "airtable"
-    - image: "/images/integrations/zendesk.png"
-      alt: "zendesk"
-    - image: "/images/integrations/slack.png"
-      alt: "slack"
-    - image: "/images/integrations/mailchimp.png"
-      alt: "mailchimp"
-    - image: "/images/integrations/asana.png"
-      alt: "asana"
+    - image: "/images/integrations/aws.png"
+      alt: "aws"
+    - image: "/images/integrations/terraform.png"
+      alt: "terraform"
+    - image: "/images/integrations/docker.png"
+      alt: "docker"
+    - image: "/images/integrations/github.png"
+      alt: "github"
+    - image: "/images/integrations/kubernetes.png"
+      alt: "kubernetes"
+    - image: "/images/integrations/grafana.png"
+      alt: "grafana"
+    - image: "/images/integrations/azure.png"
+      alt: "azure"
+    - image: "/images/integrations/gcp.png"
+      alt: "gcp"
 
 lead_generation:
   enable: true
-  title: "Free Resource for <strong>Local Business Owners</strong>"
-  subtitle: 'The "Leaking Bucket" Audit: 5 Ways You''re Losing Local Leads (And How to Fix Them).'
+  title: "Free Resource for <strong>Cloud-Native Businesses</strong>"
+  subtitle: 'The Cloud Security Checklist: 5 Misconfigurations Putting Your AWS Environment At Risk.'
   content: |
-    Did you know that most small businesses lose up to 50% of their potential sales simply because of slow follow-up?
+    Did you know most cloud security incidents come from misconfiguration, not sophisticated attacks?
 
-    Download our <strong>FREE</strong> Checklist to identify the "lead leaks" in your current business and learn how to plug them with simple software automation.
+    Download our <strong>FREE</strong> Checklist to identify the most common IAM, network, and workload risks in your cloud environment — and how to fix them.
   list:
-    - "<strong>The Follow-Up Audit:</strong> A step-by-step guide to measuring your lead response time."
-    - "<strong>Automation Quick-Wins:</strong> 3 workflows you can set up today to start booking more local appointments."
-    - "<strong>The Tech Stack Check:</strong> Stop paying for 5 different software tools."
+    - "<strong>The IAM Audit:</strong> A step-by-step guide to finding over-privileged access."
+    - "<strong>Quick-Win Hardening:</strong> 3 changes you can make this week to reduce your attack surface."
+    - "<strong>The Ops Check:</strong> Where manual processes are creating security risk."
   image: "/images/ebook.png"
   button:
     enable: true
@@ -165,6 +153,6 @@ lead_generation:
 
 pricing:
   enable: true
-  title: "Affordable <strong>Pricing Plans</strong>"
-  content: "Choose the plan that fits your local business and start growing automatically."
+  title: "Flexible <strong>Engagement Options</strong>"
+  content: "From one-time security assessments to ongoing cloud administration and monitoring — choose the model that fits your business."
 ---

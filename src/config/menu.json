@@ -1,6 +1,10 @@
 {
   "main": [
     {
+      "name": "Projects",
+      "url": "/projects"
+    },
+    {
       "name": "Services",
       "url": "/services"
     },
@@ -16,13 +20,10 @@
       "name": "Integrations",
       "url": "/integrations"
     },
+
     {
-      "name": "Projects",
-      "url": "/projects"
-    },
-    {
-      "name": "Contact",
-      "url": "/contact"
+      "name": "About",
+      "url": "/about"
     }
   ],
   "footer_col_1_title": "Primary",

@@ -1,87 +1,82 @@
 ---
-title: "Features"
-meta_title: "Features - The All-In-One Growth Software"
-description: "Everything your local business needs to attract, engage, convert, and retain customers automatically."
+title: "Services"
+meta_title: "Services - Cloud Security & Cloud Administration Experts"
+description: "Everything your business needs to secure, automate, and run its AWS cloud environment with confidence."
 image: ""
 draft: false
-
 banner:
-  title: "Features That Turn <br /> Attention <strong>Into Revenue</strong>"
-  content: "A single piece of software built to manage your entire business on autopilot. Say goodbye to scattered tools and forgotten leads."
+  title: "Cloud Infrastructure <br /> Built <strong>Secure By Design</strong>"
+  content: "A single trusted partner to secure, automate, and manage your entire AWS environment. Say goodbye to unmanaged risk and manual operations."
   button_primary:
     enable: true
-    label: "Start Free Trial"
-    link: "/pricing"
+    label: "Book a Free Consultation"
+    link: "/contact"
   button_secondary:
     enable: true
     label: "Book a Demo"
     link: "/contact"
-  image: "/images/automark_dashboard.png"
-
+  image: "/images/tribuops_dashboard.png"
 partners:
   enable: true
-  badge: "Trusted Platform"
-  title: "Powering thousands of <strong>local businesses</strong> worldwide"
-
+  badge: "Trusted Partner"
+  title: "Securing and running cloud infrastructure for <strong>growing businesses</strong>"
 smart_platform:
   enable: true
-  title: "Automate every part of your <br /> business with <strong>one smart platform.</strong>"
+  title: "Secure and automate every layer of your <br /> cloud with <strong>one trusted team.</strong>"
   cards:
-    - title: "Automated Customer Follow-Up"
-      subtitle: "Never lose a lead again. Respond to inquiries instantly and automatically."
+    - title: "Cloud Security Posture Management"
+      subtitle: "Continuously identify and remediate misconfigurations across your AWS environment."
       image: "/images/features/automated-marketing-visual.svg"
       classNames: ""
-    - title: "Autopilot Review Generator"
-      subtitle: "Automatically request and track 5-star Google reviews from happy clients."
+    - title: "Least-Privilege IAM Design"
+      subtitle: "Eliminate over-privileged access with OIDC-based, keyless authentication and tight IAM policies."
       image: "/images/features/ai-powered-graph.svg"
       classNames: ""
-    - title: "Missed Call Auto-Responder"
-      subtitle: "Turn missed calls into booked appointments with instant automated text messages."
+    - title: "Infrastructure as Code"
+      subtitle: "Terraform-driven environments that are repeatable, auditable, and fast to deploy."
       image: "/images/features/grow-your-earnings.svg"
       classNames: ""
-    - title: "Unified Lead Inbox"
-      subtitle: "Manage all your SMS, email, Facebook, and Instagram messages in one single dashboard."
+    - title: "Runtime Threat Detection"
+      subtitle: "Monitor workloads, containers, and cloud activity to catch threats before they become incidents."
       image: "/images/features/turnover-table.svg"
       classNames: "md:col-span-2 lg:col-span-2"
-    - title: "24/7 Appointment Scheduler"
-      subtitle: "Let customers book directly on your calendar, completely eliminating back-and-forth emails."
+    - title: "Automated CI/CD Pipelines"
+      subtitle: "Ship infrastructure and application changes safely with fully automated, secure deployment pipelines."
       image: "/images/features/marketing-autopilot.svg"
       classNames: ""
-
 service_features:
   enable: true
   items:
-    - title: "Built specifically to grow <strong>your local business</strong>"
+    - title: "Built specifically to secure <strong>your cloud environment</strong>"
       image: "/images/features/service-feature-1.svg"
       reverse: false
       items:
         - icon: FaBolt
-          title: "Setup in Minutes"
-          content: "Get up and running immediately with our pre-built local business templates."
+          title: "Assessment in Days, Not Months"
+          content: "Get a clear picture of your cloud security posture fast, using proven CSPM/CWP frameworks."
         - icon: FaBrain
-          title: "Automated Intelligence"
-          content: "Smart workflows that automatically sort, nurture and follow up with your leads."
+          title: "Expert-Led Analysis"
+          content: "Findings prioritized by real risk, not noisy alerts — reviewed by engineers who understand your stack."
         - icon: FaLock
-          title: "Secure & Reliable"
-          content: "Your client database and payment info is protected with bank-level encryption."
+          title: "Security-First Architecture"
+          content: "Every environment we build follows least-privilege access and industry-standard hardening practices."
         - icon: FaCubes
-          title: "All Tools In One Place"
-          content: "Replace your CRM, website builder, calendar, and email marketing software."
-
-    - title: "The only software you need to <strong>scale predictably</strong>"
+          title: "One Team, Full Coverage"
+          content: "Replace scattered vendors and freelancers with one partner for security and administration."
+    - title: "The only cloud partner you need to <strong>scale with confidence</strong>"
       image: "/images/features/service-feature-2.svg"
       reverse: true
       items:
         - icon: FaChartSimple
-          title: "Clear ROI Tracking"
-          content: "See exactly which campaigns and ads are generating the most revenue."
+          title: "Clear Risk Visibility"
+          content: "See exactly where your exposure lives — IAM, network, workloads, and compliance gaps."
         - icon: FaRocket
-          title: "Easy to Use"
-          content: "Designed for business owners, not IT professionals. Simple and intuitive."
+          title: "Built for Real Teams"
+          content: "Practical, well-documented solutions designed for teams to actually operate, not just inherit."
         - icon: FaShieldHalved
-          title: "Complete Client History"
-          content: "View every text, email, and phone call with a client in a single chronological feed."
+          title: "Full Infrastructure History"
+          content: "Every change tracked through version-controlled, auditable Infrastructure as Code."
         - icon: FaTableCellsLarge
-          title: "Mobile App Access"
-          content: "Manage leads, reply to messages, and run your business from anywhere using our mobile app."
+          title: "Multi-Cloud Ready"
+          content: "Security and administration expertise across AWS, Azure, and GCP as your footprint grows."
 ---

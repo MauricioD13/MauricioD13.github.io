@@ -10,7 +10,7 @@ export type Contact = CollectionEntry<"contact">["data"];
 export type Homepage = CollectionEntry<"homepage">["data"];
 export type Features = CollectionEntry<"features">["data"];
 export type Pricing = CollectionEntry<"pricing">["data"];
-export type CaseStudy = CollectionEntry<"caseStudy">["data"];
+export type Project = CollectionEntry<"projects">["data"];
 export type Careers = CollectionEntry<"careers">["data"];
 export type Integrations = CollectionEntry<"integrations">["data"];
 

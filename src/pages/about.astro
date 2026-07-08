@@ -11,6 +11,7 @@ import TeamCard from "@/layouts/components/TeamCard.astro";
 import { getListPage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import Features from "@/partials/Features.astro";
+import SkillsShowcase from "@/partials/SkillsShowcase.astro";
 import Testimonial from "@/partials/Testimonial.astro";
 import type { About } from "@/types";
 
@@ -248,6 +249,17 @@ const aboutData: About = about.data;
           </div>
         </div>
       </section>
+    )
+  }
+
+  <!-- Skills & Tools -->
+  {
+    aboutData.skills && (
+      <SkillsShowcase
+        title="Tools & <strong>Technologies</strong>"
+        content="What I use day to day to build and secure cloud infrastructure."
+        skills={aboutData.skills}
+      />
     )
   }
 

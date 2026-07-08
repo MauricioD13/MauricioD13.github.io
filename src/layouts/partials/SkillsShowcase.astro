@@ -1,0 +1,63 @@
+---
+import DynamicIcon from "@/helpers/DynamicIcon";
+import { markdownify } from "@/lib/utils/textConverter";
+
+interface SkillItem {
+  name: string;
+  icon: string;
+}
+
+interface SkillGroup {
+  category: string;
+  items: SkillItem[];
+}
+
+interface Props {
+  title?: string;
+  content?: string;
+  skills: SkillGroup[];
+}
+
+const { title, content, skills } = Astro.props;
+---
+
+{
+  skills.length > 0 && (
+    <section class="section relative isolate">
+      <div class="container">
+        <div class="section-container">
+          {(title || content) && (
+            <div class="section-intro centralize">
+              {title && (
+                <h2 class="title hasHighlight" set:html={markdownify(title)} />
+              )}
+              {content && <p class="subtitle">{content}</p>}
+            </div>
+          )}
+          <div class="section-content grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+            {skills.map((group) => (
+              <div class="bg-light rounded-2xl p-6 xl:p-8 border border-border">
+                <h3 class="text-h6 font-bold text-white mb-6">
+                  {group.category}
+                </h3>
+                <ul class="space-y-4">
+                  {group.items.map((item) => (
+                    <li class="flex items-center gap-3">
+                      <div class="size-8 rounded-lg bg-white/6 border border-border grid place-items-center shrink-0">
+                        <DynamicIcon
+                          icon={item.icon}
+                          className="text-text-light text-sm"
+                        />
+                      </div>
+                      <span class="text-text">{item.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

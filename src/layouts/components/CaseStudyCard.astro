@@ -2,8 +2,8 @@
 import ImageMod from "@/layouts/components/ImageMod.astro";
 interface Props {
   image: string;
-  logo: string;
-  company: string;
+  logo?: string;
+  company?: string;
   badge: string;
   title: string;
   description: string;
@@ -25,9 +25,17 @@ const { image, logo, company, badge, title, description, stats, href } =
       class="absolute inset-0 bg-linear-to-t from-dark/80 via-transparent to-transparent"
     >
     </div>
-    <div class="absolute bottom-0 left-0 p-8">
-      <ImageMod src={logo} alt={company} class="h-8 mb-4 brightness-0 invert" />
-    </div>
+    {
+      logo && (
+        <div class="absolute bottom-0 left-0 p-8">
+          <ImageMod
+            src={logo}
+            alt={company ?? title}
+            class="h-8 mb-4 brightness-0 invert"
+          />
+        </div>
+      )
+    }
   </div>
   <div class="p-8 xl:p-10 rounded-2xl bg-light border border-border">
     <div

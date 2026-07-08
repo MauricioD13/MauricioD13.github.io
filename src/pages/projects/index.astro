@@ -5,13 +5,17 @@ import CaseStudyCard from "@/layouts/components/CaseStudyCard.astro";
 import { getListPage, getSinglePage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import Testimonial from "@/partials/Testimonial.astro";
-import type { CaseStudy } from "@/types";
+import type { Project } from "@/types";
 
-const caseStudyList = await getListPage("caseStudy", "-index");
-const pageData: CaseStudy = caseStudyList.data;
+const projectsList = await getListPage("projects", "-index");
+const pageData: Project = projectsList.data;
 
-// Get all individual case study entries
-const caseStudies = await getSinglePage("caseStudy");
+// Get all individual project entries, grouped by category
+const projects = await getSinglePage("projects");
+const clientProjects = projects.filter((p) => p.data.category === "client");
+const personalProjects = projects.filter(
+  (p) => p.data.category === "personal",
+);
 ---
 
 <Base {...pageData}>
@@ -45,27 +49,55 @@ const caseStudies = await getSinglePage("caseStudy");
     class="h-px bg-linear-to-r from-transparent from-10% via-white/50 to-90% to-transparent border-0"
   />
 
-  <!-- Case Study Cards -->
-  <section class="section relative">
-    <div class="container">
-      <div class="grid gap-7 lg:gap-14">
-        {
-          caseStudies.map((study) => (
-            <CaseStudyCard
-              href={`/case-study/${study.id}`}
-              image={study.data.image!}
-              logo={study.data.logo!}
-              company={study.data.company!}
-              badge={study.data.badge!}
-              title={study.data.title}
-              description={study.data.description!}
-              stats={study.data.stats}
-            />
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <!-- Client Work -->
+  {
+    clientProjects.length > 0 && (
+      <section class="section relative">
+        <div class="container">
+          <h2 class="text-h4 lg:text-h3 mb-10">Client Work</h2>
+          <div class="grid gap-7 lg:gap-14">
+            {clientProjects.map((study) => (
+              <CaseStudyCard
+                href={`/projects/${study.id}`}
+                image={study.data.image!}
+                logo={study.data.logo}
+                company={study.data.company}
+                badge={study.data.badge!}
+                title={study.data.title}
+                description={study.data.description!}
+                stats={study.data.stats}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Personal Projects & Labs -->
+  {
+    personalProjects.length > 0 && (
+      <section class="section relative pt-0">
+        <div class="container">
+          <h2 class="text-h4 lg:text-h3 mb-10">Personal Projects & Labs</h2>
+          <div class="grid gap-7 lg:gap-14">
+            {personalProjects.map((study) => (
+              <CaseStudyCard
+                href={`/projects/${study.id}`}
+                image={study.data.image!}
+                logo={study.data.logo}
+                company={study.data.company}
+                badge={study.data.badge!}
+                title={study.data.title}
+                description={study.data.description!}
+                stats={study.data.stats}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <!-- Testimonials -->
   <Testimonial />

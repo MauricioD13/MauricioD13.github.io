@@ -1,6 +1,7 @@
 import React, { type FC } from "react";
 import type { IconType } from "react-icons";
 import * as FaIcons from "react-icons/fa6";
+import * as SiIcons from "react-icons/si";
 // import * as AiIcons from "react-icons/ai";
 // import * as BsIcons from "react-icons/bs";
 // import * as FiIcons from "react-icons/fi";
@@ -18,6 +19,7 @@ interface IDynamicIcon extends React.SVGProps<SVGSVGElement> {
 
 const iconLibraries: { [key: string]: IconMap } = {
   fa: FaIcons,
+  si: SiIcons,
 };
 
 const DynamicIcon: FC<IDynamicIcon> = ({ icon, ...props }) => {

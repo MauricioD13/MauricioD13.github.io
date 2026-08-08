@@ -1,9 +1,9 @@
 ---
 enable: true
-title: "Ready to put Your Local Business Growth on <strong>Autopilot?</strong>"
-description: "Stop wasting thousands on scattered tools that don't convert and start enjoying streamlined, predictable growth."
+title: "Ready to get your cloud <strong>secure and under control?</strong>"
+description: "Whether it's a one-time security assessment or ongoing infrastructure management, let's talk about what your setup actually needs."
 button:
   enable: true
-  label: "Start Your 14-Days Free Trial"
-  link: "https://themefisher.com/products/automark-astro?aff=automarkdemo"
+  label: "Get in Touch"
+  link: "/contact"
 ---

@@ -1,20 +1,20 @@
 ---
 enable: true
 badge: "Our Philosophy"
-title: "Why We Do What We Do - A Letter From <strong>Our CEO</strong>"
+title: "<strong>About me</strong>"
 ceo:
-  image: "/images/avatar-lg.png"
-  name: "Ronald Richards"
+  image: "/images/profile.png"
+  name: "Mauricio Cuelo"
   role: "Founder & CEO"
-letter: '<p><strong class="text-white font-normal">At Automark, we know you started your local business to serve your community, not to become a software engineer.</strong> The problem is most modern marketing tools are too complex, scattered, and disconnected, which leaves you feeling overwhelmed and stuck in the daily admin grind.</p><br><p>We believe you shouldn''t have to pay for five different subscriptions or spend your weekends sending emails just to grow your company. We understand how frustrating it is to watch hard-earned leads slip through the cracks, which is why we built a single, unified platform that puts your follow-ups, reviews, and bookings on complete autopilot.</p>'
-letter_points_title: "Here's how we do it:"
+letter: "<p><strong class=\"text-white font-normal\">Cloud engineer specializing in AWS with over 4 years of experience in cloud infrastructure design, automation, and security.</strong> I hold a master's degree in Cybersecurity and I am certified as an AWS Solutions Architect Associate, with expertise in building secure, scalable, and resilient architectures compliant with PCI DSS standards.</p><br><p>I have experience evaluating CNAPP solutions and exploring AI security across multicloud environments (AWS, Azure, GCP), and I integrate automation using Terraform, Python, and IaC methodologies. With solid experience in Linux server administration, SQL databases, and programming in Python and C, I focus on optimizing costs, improving operational reliability, and accelerating deployment cycles. I'm a collaborative, results-oriented professional committed to continuous innovation and technical excellence.</p>"
+letter_points_title: "A little bit about how I think:"
 letter_points:
-  - "1. Plug In Your Business Data"
-  - "2. Activate Our Local Workflows"
-  - "3. Watch Your Bookings Grow"
-closing_content: "Stop wasting money on scattered tools that don't talk to each other, and instead enjoy a streamlined business with consistent, predictable revenue growth."
+  - "Enables fast left-right flow of work and optimize for global goals"
+  - "Enables the fsat and constant flow of feedback at all stages of our value stream"
+  - "Enables a culture of experimentation and scientific rigor for testing new ideas."
+closing_content: "Together, these three ways — Flow, Feedback, and Experimentation — form a system: work moves fast, problems surface fast, and the culture keeps testing what makes it faster still. None works alone; each depends on the other two to compound. Mastering all three is what turns a good team into a high-performing one."
 button:
   enable: true
-  label: "Start Your 14-Day Free Trial"
-  link: "/pricing"
+  label: "Get in Touch"
+  link: "/contact"
 ---

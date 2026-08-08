@@ -1,15 +1,17 @@
 ---
 enable: true
-title: Trusted by <strong class="text-primary">10,000+</strong> local businesses to scale their bookings and growth automatically.
+title: Tools and platforms I work with <strong class="text-primary">day to day</strong>.
 images:
-  - src: "/images/brands/dropbox-logo-svg-150px.svg"
-    alt: "Dropbox"
-  - src: "/images/brands/hubspot-logo-svg-150.svg"
-    alt: "HubSpot"
-  - src: "/images/brands/livechat-logo-svg-150px.svg"
-    alt: "LiveChat"
-  - src: "/images/brands/pingdom-logo-svg-150px.svg"
-    alt: "Pingdom"
-  - src: "/images/brands/scapic-logo-svg-150px.svg"
-    alt: "Scapic"
+  - src: "/images/brands/docker-logo-svg.svg"
+    alt: "Docker"
+  - src: "/images/brands/aws-logo-svg.svg"
+    alt: "AWS"
+  - src: "/images/brands/ansible-logo-svg.svg"
+    alt: "Ansible"
+  - src: "/images/brands/terraform-logo-svg.svg"
+    alt: "Terraform"
+  - src: "/images/brands/c-programming-language-svg.svg"
+    alt: "C programming"
+  - src: "/images/brands/python-logo-svg.svg"
+    alt: "Python"
 ---

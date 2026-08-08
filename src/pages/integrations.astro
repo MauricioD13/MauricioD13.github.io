@@ -1,7 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/layouts/components/CallToAction.astro";
-import Faq from "@/layouts/components/Faq.astro";
 import IntegrationCard from "@/layouts/components/IntegrationCard.astro";
 import { getListPage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
@@ -52,9 +51,6 @@ const integrationsData: Integrations = integrations.data;
       </section>
     )
   }
-
-  <!-- FAQ -->
-  <Faq />
 
   <!-- Call to Action -->
   <CallToAction />

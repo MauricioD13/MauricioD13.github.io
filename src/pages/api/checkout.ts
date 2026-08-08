@@ -115,7 +115,7 @@ export const POST: APIRoute = async ({ request, url }) => {
       ],
       mode: "subscription",
       success_url: `${url.origin}?session_id={CHECKOUT_SESSION_ID}&success=true`,
-      cancel_url: `${url.origin}/pricing?canceled=true`,
+      cancel_url: `${url.origin}/?canceled=true`,
     });
 
     return new Response(

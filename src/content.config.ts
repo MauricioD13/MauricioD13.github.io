@@ -214,11 +214,6 @@ const homepageCollection = defineCollection({
         link: z.string(),
       }),
     }),
-    pricing: z.object({
-      enable: z.boolean(),
-      title: z.string(),
-      content: z.string(),
-    }),
   }),
 });
 
@@ -275,53 +270,6 @@ const featuresCollection = defineCollection({
             }),
           ),
           reverse: z.boolean(),
-        }),
-      ),
-    }),
-  }),
-});
-
-const pricingCollection = defineCollection({
-  loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/pricing" }),
-  schema: z.object({
-    ...commonFields,
-    page_header: z.object({
-      badge: z.string().optional(),
-      title: z.string(),
-      content: z.string(),
-    }),
-    toggler: z.object({ monthly_label: z.string(), yearly_label: z.string() }),
-    plans: z.array(
-      z.object({
-        title: z.string(),
-        price: z.string(),
-        yearly_price: z.string(),
-        is_featured: z.boolean(),
-        offer_text: z.string().optional(),
-        button: z.object({
-          enable: z.boolean(),
-          label: z.string(),
-          link: z.string(),
-        }),
-        description: z.string(),
-        features: z.array(
-          z.object({
-            label: z.string(),
-            included: z.boolean(),
-            tooltip: z.string().optional(),
-          }),
-        ),
-      }),
-    ),
-    comparison: z.object({
-      enable: z.boolean(),
-      badge: z.string().optional(),
-      title: z.string(),
-      headers: z.array(z.object({ label: z.string() })),
-      rows: z.array(
-        z.object({
-          feature: z.string(),
-          values: z.array(z.union([z.string(), z.boolean()])),
         }),
       ),
     }),
@@ -500,42 +448,6 @@ const ctaSectionCollection = defineCollection({
   }),
 });
 
-const comparisonRowSectionCollection = defineCollection({
-  loader: glob({
-    pattern: "comparison-row.{md,mdx}",
-    base: "src/content/sections",
-  }),
-  schema: z.object({
-    enable: z.boolean(),
-    badge: z.string().optional(),
-    title: z.string(),
-    price_suffix: z.string().optional(),
-    items: z.array(
-      z.object({
-        title: z.string(),
-        price: z.string(),
-        images: z.array(z.string()),
-      }),
-    ),
-  }),
-});
-
-const faqSectionCollection = defineCollection({
-  loader: glob({ pattern: "faq.{md,mdx}", base: "src/content/sections" }),
-  schema: z.object({
-    enable: z.boolean(),
-    badge: z.string().optional(),
-    title: z.string(),
-    description: z.string(),
-    button: z.object({
-      enable: z.boolean(),
-      label: z.string(),
-      link: z.string(),
-    }),
-    items: z.array(z.object({ question: z.string(), answer: z.string() })),
-  }),
-});
-
 const brandsSectionCollection = defineCollection({
   loader: glob({ pattern: "brands.{md,mdx}", base: "src/content/sections" }),
   schema: z.object({
@@ -564,46 +476,6 @@ const ourStorySectionCollection = defineCollection({
   }),
 });
 
-const testimonialSectionCollection = defineCollection({
-  loader: glob({
-    pattern: "testimonial.{md,mdx}",
-    base: "src/content/sections",
-  }),
-  schema: z.object({
-    enable: z.boolean(),
-    title: z.string(),
-    testimonials: z.array(
-      z.object({
-        name: z.string(),
-        designation: z.string(),
-        poster: z.string(),
-        content: z.string(),
-        video: z.string().optional(),
-      }),
-    ),
-  }),
-});
-
-const businessNeedsSectionCollection = defineCollection({
-  loader: glob({
-    pattern: "business-needs.{md,mdx}",
-    base: "src/content/sections",
-  }),
-  schema: z.object({
-    enable: z.boolean(),
-    badge: z.string().optional(),
-    title: z.string(),
-    items: z.array(
-      z.object({
-        image: z.string(),
-        number: z.string(),
-        title: z.string(),
-        content: z.string(),
-      }),
-    ),
-  }),
-});
-
 export const collections = {
   blog: blogCollection,
   blogIndex: blogIndexCollection,
@@ -612,15 +484,10 @@ export const collections = {
   contact: contactCollection,
   homepage: homepageCollection,
   features: featuresCollection,
-  pricing: pricingCollection,
   projects: projectsCollection,
   careers: careersCollection,
   integrations: integrationsCollection,
   ctaSection: ctaSectionCollection,
-  faqSection: faqSectionCollection,
   brandsSection: brandsSectionCollection,
   ourStorySection: ourStorySectionCollection,
-  testimonialSection: testimonialSectionCollection,
-  comparisonRowSection: comparisonRowSectionCollection,
-  businessNeedsSection: businessNeedsSectionCollection,
 };

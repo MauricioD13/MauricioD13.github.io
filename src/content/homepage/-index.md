@@ -1,15 +1,15 @@
 ---
 banner:
   title: "Secure, Well-Architected <strong>Cloud Infrastructure</strong>"
-  content: "Cloud security and cloud administration built by engineers who live in AWS every day — from architecture and automation to threat detection and compliance."
+  content: "Cloud security and cloud administration built by engineers who live in the cloud every day"
   button_primary:
     enable: true
-    label: "Book a Free Consultation"
+    label: "Get in contact"
     link: "/contact"
   button_secondary:
     enable: true
-    label: "Explore Our Services"
-    link: "/services"
+    label: "Look at my projects"
+    link: "/projects"
 
 main_features:
   enable: true
@@ -75,12 +75,12 @@ our_features:
       is_starred: false
 
 testimonial_quote:
-  enable: true
+  enable: false
   title: "You shouldn't have to choose between moving fast and staying <strong>secure</strong>"
   quote: "Before working with TribuOps, we weren't sure what was actually exposed in our cloud accounts. Now we have a hardened, well-documented environment with real visibility — and a team that manages it, not just audits it."
 
 single_testimonial:
-  enable: true
+  enable: false
   stats:
     - value: "99.9%"
       label: "Infrastructure Uptime"
@@ -150,9 +150,4 @@ lead_generation:
     enable: true
     label: "Get Free Checklist"
     link: "/contact"
-
-pricing:
-  enable: true
-  title: "Flexible <strong>Engagement Options</strong>"
-  content: "From one-time security assessments to ongoing cloud administration and monitoring — choose the model that fits your business."
 ---

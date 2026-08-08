@@ -8,7 +8,7 @@ draft: false
 page_header:
   title: "Hi, I'm Mauricio Cuello — <strong>Cloud Security & AWS Infrastructure Consultant</strong>"
   subtitle: "I'm the engineer behind TribuOps. I work directly with clients on AWS infrastructure administration, cloud security hardening, and CI/CD automation — no account managers, no hand-offs, just the person doing the work."
-  image: "/images/about_hero.png"
+  image: "/images/profile.png"
 
 stats:
   enable: false

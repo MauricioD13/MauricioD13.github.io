@@ -2,7 +2,6 @@
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/layouts/components/CallToAction.astro";
 import CareerCard from "@/layouts/components/CareerCard.astro";
-import Faq from "@/layouts/components/Faq.astro";
 import GradientBlob from "@/layouts/components/GradientBlob.astro";
 import ImageMod from "@/layouts/components/ImageMod.astro";
 import ValueCard from "@/layouts/components/ValueCard.astro";
@@ -223,9 +222,6 @@ const jobs = await getSinglePage("careers");
       </section>
     )
   }
-
-  <!-- FAQ -->
-  <Faq />
 
   <!-- Call to Action -->
   <CallToAction />

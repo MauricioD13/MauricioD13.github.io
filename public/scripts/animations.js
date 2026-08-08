@@ -4,51 +4,6 @@ import { sporeCanvas } from "./particleCanvas.js";
 (function () {
   "use strict";
 
-  // Hero Video Showcase: GSAP 3D scroll tilt
-  // On XL: starts scaled 0.8, rotationX 10, top -250 → scrolls to normal
-  // On < XL: starts scaled 0.8, rotationX 15 → scrolls to normal
-  function heroVideo() {
-    const mm = gsap.matchMedia();
-    const gsapVideoShowcase = document.querySelectorAll(
-      "[data-gsap-video-showcase]",
-    );
-    if (!gsapVideoShowcase.length) return;
-
-    gsapVideoShowcase.forEach((el) => {
-      mm.add("(min-width: 1280px)", () => {
-        gsap.set(el, { scale: 0.8, rotationX: 10, top: -250 });
-        gsap.to(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "20% 95%",
-            end: "0% 30%",
-            scrub: true,
-            markers: false,
-          },
-          scale: 1,
-          rotationX: 0,
-          top: 0,
-          ease: "none",
-        });
-      });
-
-      mm.add("(max-width: 1279px)", () => {
-        gsap.set(el, { scale: 0.8, rotationX: 15 });
-        gsap.to(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "20% 95%",
-            end: "0% 40%",
-            scrub: true,
-          },
-          scale: 1,
-          rotationX: 0,
-          ease: "none",
-        });
-      });
-    });
-  }
-
   // Trusted Partners: animated cycling brand logos
   function updateTrustedPartners() {
     const partners = document.querySelector("[data-trusted-brands-images]");
@@ -164,7 +119,6 @@ import { sporeCanvas } from "./particleCanvas.js";
     // Init Lenis smooth scroll
     new Lenis({ autoRaf: true });
 
-    heroVideo();
     updateTrustedPartners();
     sporesEffect();
     pricingToggle();

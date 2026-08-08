@@ -11,48 +11,48 @@ page_header:
 integrations:
   enable: true
   items:
-    - icon: FaGoogle
-      class: "text-[#4285F4]"
-      title: "Google Workspace"
-    - icon: FaCalendarCheck
-      class: "text-[#006BFF]"
-      title: "Calendly"
-    - icon: FaMailchimp
-      class: "text-[#FFE01B]"
-      title: "Mailchimp"
-    - icon: FaVideo
-      class: "text-[#2D8CFF]"
-      title: "Zoom"
-    - icon: FaFacebook
-      class: "text-[#1877F2]"
-      title: "Facebook"
-    - icon: FaLinkedin
-      class: "text-[#0A66C2]"
-      title: "LinkedIn"
-    - icon: FaGoogle
-      class: "text-[#4285F4]"
-      title: "Google Ads"
-    - icon: FaFileInvoiceDollar
-      class: "text-[#2CA01C]"
-      title: "QuickBooks"
-    - icon: FaTiktok
+    - icon: FaAws
+      class: "text-[#FF9900]"
+      title: "AWS"
+    - icon: SiTerraform
+      class: "text-[#7B42BC]"
+      title: "Terraform"
+    - icon: FaDocker
+      class: "text-[#2496ED]"
+      title: "Docker"
+    - icon: SiKubernetes
+      class: "text-[#326CE5]"
+      title: "Kubernetes"
+    - icon: FaPython
+      class: "text-[#3776AB]"
+      title: "Python"
+    - icon: SiFastapi
+      class: "text-[#009688]"
+      title: "FastAPI"
+    - icon: FaGithub
       class: "text-white"
-      title: "TikTok"
-    - icon: FaInstagram
-      class: "text-[#E4405F]"
-      title: "Instagram"
-    - icon: FaShopify
-      class: "text-[#96BF48]"
-      title: "Shopify"
+      title: "GitHub Actions"
+    - icon: SiPrometheus
+      class: "text-[#E6522C]"
+      title: "Prometheus"
+    - icon: SiGrafana
+      class: "text-[#F46800]"
+      title: "Grafana"
+    - icon: SiN8N
+      class: "text-[#EA4B71]"
+      title: "n8n"
     - icon: FaSlack
       class: "text-[#4A154B]"
       title: "Slack"
-    - icon: FaUsersGear
+    - icon: SiMicrosoftazure
+      class: "text-[#0078D4]"
+      title: "Azure"
+    - icon: FaGoogle
+      class: "text-[#4285F4]"
+      title: "Google Cloud"
+    - icon: FaShieldHalved
       class: "text-primary"
-      title: "Custom CRMs"
-    - icon: FaChartLine
-      class: "text-primary"
-      title: "Internal Dashboards"
+      title: "Cortex Cloud / Prisma Cloud"
     - icon: FaCode
       class: "text-primary"
       title: "Private APIs"

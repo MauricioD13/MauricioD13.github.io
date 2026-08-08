@@ -9,10 +9,6 @@
       "url": "/services"
     },
     {
-      "name": "Pricing",
-      "url": "/pricing"
-    },
-    {
       "name": "Blog",
       "url": "/blog"
     },
@@ -41,10 +37,6 @@
     {
       "name": "Features",
       "url": "/features"
-    },
-    {
-      "name": "Pricing",
-      "url": "/pricing"
     },
     {
       "name": "Contact",

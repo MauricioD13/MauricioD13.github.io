@@ -73,8 +73,9 @@ Note `@/*` maps to `src/*`, not `src/layouts/*` — but most reusable UI actuall
 - `src/layouts/Base.astro` — root HTML shell (head/meta, header, footer) every page wraps in.
 - `src/layouts/partials/` — large page sections composed onto `Base` (Header, Footer, Features, Testimonial, CallToAction, GHLMeeting).
 - `src/layouts/components/` — smaller reusable pieces (cards, badges, forms). Mix of `.astro` (static) and `.tsx` (interactive React islands, e.g. `PricingCheckout.tsx`, `DynamicIcon.tsx`).
-- `src/layouts/shortcodes/` — MDX-only components (`Button`, `Accordion`, `Notice`, `Video`, `Youtube`, `Tabs`, `Tab`), auto-imported via `astro-auto-import` in `astro.config.mjs`. **Do not add `import` statements for these in `.mdx` files** — they're already global.
+- `src/layouts/shortcodes/` — MDX-only components (`Button`, `Accordion`, `Notice`, `Video`, `Youtube`, `Tabs`, `Tab`), auto-imported via `astro-auto-import` in `astro.config.mjs`. **Do not add `import` statements for these in `.mdx` files** — they're already global. Note: `Youtube` is commented out of the `AutoImport` list, so it needs a manual import if used.
 - `src/pages/[regular].astro` — catch-all dynamic route rendering any entry in the `pages` collection (legal pages, elements showcase) through a shared PageHeader + Content layout. Add a new generic content page by dropping a `.md`/`.mdx` file in `src/content/pages/`, not by adding a new `.astro` route.
+- `src/content/pages/elements.mdx` (served at **`/elements`** — there is no `/resources` route in this repo) is a live showcase/reference of every available shortcode (`Button`, `Notice`, `Tabs`/`Tab`, `Accordion`, `Video`) plus plain Markdown constructs (headings, lists, code blocks, tables, quotes, images). Check this page first when unsure what MDX components exist or how to invoke them.
 
 ### GoHighLevel + Stripe integration (`src/pages/api/`)
 
@@ -95,9 +96,16 @@ This repo ships its own skill docs for GoHighLevel, Stripe, and Astro convention
 - `.agents/skills/stripe-best-practices/SKILL.md` (+ `references/` for billing, connect, payments, security, treasury)
 - `.agents/skills/stripe-projects/SKILL.md`
 
+### Additional component in scroll
+
+Add under the frontend/animation section of CLAUDE.md, or create '## Frontend Animation Constraints' if none exists.\n\n## Frontend Animation Constraints
+- This site uses Lenis smooth-scroll globally. Any new scroll-driven component (GSAP ScrollTrigger, Observer, sliders) must integrate with the existing Lenis instance (`lenis.on('scroll', ScrollTrigger.update)` + `gsap.ticker`) rather than attaching its own wheel/scroll listeners.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
+
+An `astro-docs` MCP server is available (`mcp__astro-docs__search_astro_docs`) — prefer it over guessing or web-searching for Astro API/behavior questions.
 
 Consult these guides before working on related tasks:
 

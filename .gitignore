@@ -29,3 +29,6 @@ package-lock.json
 .idea/
 
 *.mp4
+pnpm-lock.yaml
+pnpm-workspace.yaml
+*.png

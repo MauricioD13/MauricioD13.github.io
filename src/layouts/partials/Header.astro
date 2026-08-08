@@ -16,7 +16,7 @@ export interface NavigationLink {
 }
 
 const { main }: { main: NavigationLink[] } = menu;
-const { navigation_button, settings } = config;
+const { settings } = config;
 const { pathname } = Astro.url;
 ---
 
@@ -118,47 +118,8 @@ const { pathname } = Astro.url;
           </>
         ))
       }
-      {
-        navigation_button.enable && (
-          <li class="pt-4 inline-block lg:hidden">
-            <a
-              class="btn-outline btn-sm"
-              href={navigation_button.link}
-              target={
-                navigation_button.link.startsWith("http") ? "_blank" : "_self"
-              }
-              rel={
-                navigation_button.link.startsWith("http")
-                  ? "noopener noreferrer"
-                  : ""
-              }
-            >
-              {navigation_button.label}
-            </a>
-          </li>
-        )
-      }
     </ul>
-    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-      {
-        navigation_button.enable && (
-          <a
-            class="btn btn-primary hidden lg:inline-block"
-            href={navigation_button.link}
-            target={
-              navigation_button.link.startsWith("http") ? "_blank" : "_self"
-            }
-            rel={
-              navigation_button.link.startsWith("http")
-                ? "noopener noreferrer"
-                : ""
-            }
-          >
-            {navigation_button.label}
-          </a>
-        )
-      }
-    </div>
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0"></div>
   </nav>
 
   <!-- expanded menu background -->

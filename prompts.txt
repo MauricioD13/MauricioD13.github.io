@@ -1,0 +1,25 @@
+[context]
+The architecture diagram needs to be refine with several details, the main goal is that the main page of the site has an fascinating appeareance with a lot of visuals. In the following are the details that need to be fixed
+[Tasks]
+- Use the official icons of AWS because it looks more professional
+- The AWS WAF needs to be between Route 53 and the internet gateway
+- Remove two ec2 instace, I only need two
+- Give it a more space because some names are not showing well
+- The service route 53 shall be inside the area of AWS Cloud, currently is outside
+
+[context]
+The main page diagram where is a AWS architecture is the first diagram (component), now I want to have slider or something like that to have multiple diagrams.TThe motion of the slider shall be controlled be the mouse scroll and show the diagrams that are going to be in each diagram
+Requirements:
+- Use GSAP as base library for the animations
+[Tasks]
+- Use the infinite-card-slider example, to build the slider for the diagrams, here is the example: https://demos.gsap.com/demo/infinite-card-slider/
+- Create two more diagram cards to fill later
+- The card slider shall be controlled be the mouse scroll 
+
+
+[context]
+The card slider has several slides, but the scroll croll is not ready
+[Issues]
+- The global scroll is messing with the scroll of the card slider, when I scroll down the transition is not good
+[Tools]
+- Use playwright to verify this behavior 

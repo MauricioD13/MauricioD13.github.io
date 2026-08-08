@@ -1,0 +1,27 @@
+---
+// Multi-line label rendered below an AWS icon in AwsArchitectureDiagram.astro
+interface Props {
+  x: number;
+  y: number;
+  label: string;
+  fontSize?: number;
+  color?: string;
+}
+
+const { x, y, label, fontSize = 13, color = "var(--color-text)" } = Astro.props;
+const lineHeight = fontSize + 3;
+---
+
+{
+  label.split(" ").map((word, i) => (
+    <text
+      x={x}
+      y={y + i * lineHeight}
+      text-anchor="middle"
+      font-size={fontSize}
+      fill={color}
+    >
+      {word}
+    </text>
+  ))
+}

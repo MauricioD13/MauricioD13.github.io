@@ -1,0 +1,189 @@
+---
+// AWS Architecture Diagram
+// Official AWS Architecture Icons (aws-react-icons), classic nested reference-diagram style:
+// AWS Cloud -> Region -> VPC -> 2x Availability Zone, a central Route 53 -> WAF -> Internet Gateway ->
+// ALB -> Auto Scaling -> NLB request path, EC2/RDS in subnets, and a sidebar of supporting services.
+// GSAP (already loaded globally via CDN in Base.astro) animates markers traveling down
+// the single central path, looping. Respects prefers-reduced-motion (see script below).
+import AwsIconLabel from "./AwsIconLabel.astro";
+
+import ArchitectureGroupAWSCloud from "aws-react-icons/lib/icons/ArchitectureGroupAWSCloud";
+import ArchitectureGroupRegion from "aws-react-icons/lib/icons/ArchitectureGroupRegion";
+import ArchitectureGroupVirtualprivatecloudVPC from "aws-react-icons/lib/icons/ArchitectureGroupVirtualprivatecloudVPC";
+import ArchitectureGroupPublicsubnet from "aws-react-icons/lib/icons/ArchitectureGroupPublicsubnet";
+import ArchitectureGroupPrivatesubnet from "aws-react-icons/lib/icons/ArchitectureGroupPrivatesubnet";
+import ArchitectureServiceAmazonRoute53 from "aws-react-icons/lib/icons/ArchitectureServiceAmazonRoute53";
+import ArchitectureServiceAWSWAF from "aws-react-icons/lib/icons/ArchitectureServiceAWSWAF";
+import ResourceAmazonVPCInternetGateway from "aws-react-icons/lib/icons/ResourceAmazonVPCInternetGateway";
+import ResourceElasticLoadBalancingApplicationLoadBalancer from "aws-react-icons/lib/icons/ResourceElasticLoadBalancingApplicationLoadBalancer";
+import ResourceElasticLoadBalancingNetworkLoadBalancer from "aws-react-icons/lib/icons/ResourceElasticLoadBalancingNetworkLoadBalancer";
+import ArchitectureServiceAWSAutoScaling from "aws-react-icons/lib/icons/ArchitectureServiceAWSAutoScaling";
+import ArchitectureServiceAmazonEC2 from "aws-react-icons/lib/icons/ArchitectureServiceAmazonEC2";
+import ArchitectureServiceAmazonRDS from "aws-react-icons/lib/icons/ArchitectureServiceAmazonRDS";
+import ArchitectureServiceAWSIdentityandAccessManagement from "aws-react-icons/lib/icons/ArchitectureServiceAWSIdentityandAccessManagement";
+import ArchitectureServiceAmazonSimpleStorageService from "aws-react-icons/lib/icons/ArchitectureServiceAmazonSimpleStorageService";
+import ArchitectureServiceAmazonCloudFront from "aws-react-icons/lib/icons/ArchitectureServiceAmazonCloudFront";
+import ArchitectureServiceAWSCloudFormation from "aws-react-icons/lib/icons/ArchitectureServiceAWSCloudFormation";
+import ArchitectureServiceAWSTrustedAdvisor from "aws-react-icons/lib/icons/ArchitectureServiceAWSTrustedAdvisor";
+import ArchitectureServiceAmazonElastiCache from "aws-react-icons/lib/icons/ArchitectureServiceAmazonElastiCache";
+import ArchitectureServiceAWSShield from "aws-react-icons/lib/icons/ArchitectureServiceAWSShield";
+
+const centerX = 675;
+
+// Central request-flow stack, top to bottom. Route 53 + WAF sit inside the AWS Cloud
+// boundary but above the Region (global/edge services, not region-scoped).
+const stack = [
+  { icon: ArchitectureServiceAmazonRoute53, label: "Amazon Route 53", cy: 110, size: 60 },
+  { icon: ArchitectureServiceAWSWAF, label: "AWS WAF", cy: 230, size: 54 },
+  { icon: ResourceAmazonVPCInternetGateway, label: "Internet Gateway", cy: 350, size: 54 },
+  { icon: ResourceElasticLoadBalancingApplicationLoadBalancer, label: "Application Load Balancer", cy: 450, size: 54 },
+  { icon: ArchitectureServiceAWSAutoScaling, label: "Auto Scaling", cy: 510, size: 56 },
+  { icon: ResourceElasticLoadBalancingNetworkLoadBalancer, label: "Network Load Balancer", cy: 690, size: 54 },
+];
+
+const azs = [
+  { x: 130, subnetX: 150 },
+  { x: 800, subnetX: 820 },
+];
+
+// Sidebar of supporting services
+const sidebar = [
+  { icon: ArchitectureServiceAWSTrustedAdvisor, label: "AWS Trusted Advisor", cy: 90 },
+  { icon: ArchitectureServiceAWSCloudFormation, label: "AWS CloudFormation", cy: 220 },
+  { icon: ArchitectureServiceAWSShield, label: "AWS Shield", cy: 350 },
+  { icon: ArchitectureServiceAWSIdentityandAccessManagement, label: "AWS IAM", cy: 480 },
+  { icon: ArchitectureServiceAmazonSimpleStorageService, label: "Amazon S3", cy: 610 },
+  { icon: ArchitectureServiceAmazonCloudFront, label: "Amazon CloudFront", cy: 740 },
+  { icon: ArchitectureServiceAmazonElastiCache, label: "Amazon ElastiCache", cy: 870 },
+];
+const sidebarX = 1420;
+const sidebarIconSize = 52;
+---
+
+<div
+  class="relative w-full max-w-280 mx-auto rounded-4xl overflow-hidden bg-light border border-border p-4"
+  data-aws-diagram
+>
+  <svg
+    class="w-full h-auto"
+    viewBox="0 0 1600 1000"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <!-- Central request-flow path -->
+    <path
+      id="flow-central"
+      d={`M${centerX},110 L${centerX},690`}
+      fill="none"
+      stroke="#8C4FFF"
+      stroke-width="2"
+    />
+    <circle data-marker-for="flow-central" cx={centerX} cy="110" r="5" fill="var(--color-secondary)" />
+    <circle data-marker-for="flow-central" cx={centerX} cy="110" r="5" fill="var(--color-secondary)" />
+    <circle data-marker-for="flow-central" cx={centerX} cy="110" r="5" fill="var(--color-secondary)" />
+
+    <!-- AWS Cloud -->
+    <rect x="40" y="40" width="1260" height="830" rx="10" fill="none" stroke="var(--color-text)" stroke-width="1.5" />
+    <ArchitectureGroupAWSCloud x={55} y={56} size={30} />
+    <text x="95" y="76" font-size="14" fill="var(--color-text)">AWS Cloud</text>
+
+    <!-- Region -->
+    <rect x="70" y="280" width="1200" height="570" rx="10" fill="none" stroke="#4B96E6" stroke-width="1.5" stroke-dasharray="6 4" />
+    <ArchitectureGroupRegion x={85} y={292} size={26} />
+    <text x="118" y="309" font-size="13" fill="#4B96E6">US East (N. Virginia)</text>
+
+    <!-- VPC -->
+    <rect x="100" y="330" width="1140" height="500" rx="10" fill="none" stroke="#7AA116" stroke-width="2" />
+    <ArchitectureGroupVirtualprivatecloudVPC x={115} y={342} size={26} />
+    <text x="148" y="359" font-size="14" fill="#7AA116">Virtual Private Cloud</text>
+
+    <!-- Auto Scaling band (behind subnets) -->
+    <rect x="150" y="500" width="1050" height="190" rx="12" fill="none" stroke="#ED7100" stroke-width="1.5" stroke-dasharray="6 4" />
+
+    {
+      azs.map((az) => (
+        <>
+          <rect x={az.x} y="365" width="420" height="440" rx="8" fill="none" stroke="#4B96E6" stroke-width="1.5" stroke-dasharray="4 4" />
+          <text x={az.x + 20} y="390" font-size="13" fill="#4B96E6">Availability Zone</text>
+
+          <!-- Public Subnet -->
+          <rect x={az.subnetX} y="395" width="380" height="75" rx="8" fill="color-mix(in srgb, #7AA116 14%, transparent)" stroke="#7AA116" stroke-width="1" />
+          <ArchitectureGroupPublicsubnet x={az.subnetX + 12} y={405} size={22} />
+          <text x={az.subnetX + 42} y="422" font-size="12" fill="#7AA116">Public Subnet</text>
+
+          <!-- Web/App Subnet -->
+          <rect x={az.subnetX} y="510" width="380" height="130" rx="8" fill="color-mix(in srgb, #3B48CC 10%, transparent)" stroke="#3B48CC" stroke-width="1" />
+          <ArchitectureGroupPrivatesubnet x={az.subnetX + 12} y="520" size={22} />
+          <text x={az.subnetX + 42} y="537" font-size="12" fill="#3B48CC">Web/App Subnet</text>
+          <ArchitectureServiceAmazonEC2 x={az.subnetX + 160} y="565" size={60} />
+          <AwsIconLabel x={az.subnetX + 190} y={645} label="EC2" fontSize={13} color="#3B48CC" />
+
+          <!-- DB Subnet -->
+          <rect x={az.subnetX} y="700" width="380" height="90" rx="8" fill="color-mix(in srgb, #3B48CC 10%, transparent)" stroke="#3B48CC" stroke-width="1" />
+          <ArchitectureGroupPrivatesubnet x={az.subnetX + 12} y="710" size={22} />
+          <text x={az.subnetX + 42} y="727" font-size="12" fill="#3B48CC">DB Subnet</text>
+          <ArchitectureServiceAmazonRDS x={az.subnetX + 160} y="722" size={44} />
+        </>
+      ))
+    }
+
+    <!-- Central stack icons (drawn after subnets so they sit on top) -->
+    {
+      stack.map((item) => {
+        const Icon = item.icon;
+        return (
+          <>
+            <Icon x={centerX - item.size / 2} y={item.cy - item.size / 2} size={item.size} />
+            <AwsIconLabel x={centerX} y={item.cy + item.size / 2 + 18} label={item.label} />
+          </>
+        );
+      })
+    }
+
+    <!-- Supporting services sidebar -->
+    {
+      sidebar.map((item) => {
+        const Icon = item.icon;
+        return (
+          <>
+            <Icon x={sidebarX - sidebarIconSize / 2} y={item.cy - sidebarIconSize / 2} size={sidebarIconSize} />
+            <AwsIconLabel x={sidebarX} y={item.cy + sidebarIconSize / 2 + 18} label={item.label} />
+          </>
+        );
+      })
+    }
+  </svg>
+</div>
+
+<script>
+  // gsap is loaded globally via CDN <script> in Base.astro (see public/scripts/animations.js
+  // for the established pattern); this devDependency only supplies types, not runtime code.
+  declare const gsap: typeof import("gsap").gsap;
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (!reduceMotion) {
+    const root = document.querySelector("[data-aws-diagram]");
+    if (root) {
+      // The central path is a straight vertical line (see #flow-central's `d`), so a
+      // direct cy tween reproduces the "traveling marker" motion without MotionPathPlugin.
+      const markers = root.querySelectorAll<SVGCircleElement>(
+        '[data-marker-for="flow-central"]',
+      );
+      markers.forEach((marker, i) => {
+        gsap.fromTo(
+          marker,
+          { attr: { cy: 110 } },
+          {
+            attr: { cy: 690 },
+            duration: 2.6,
+            delay: i * 0.7,
+            repeat: -1,
+            ease: "none",
+          },
+        );
+      });
+    }
+  }
+</script>

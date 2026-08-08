@@ -3,7 +3,6 @@ import Base from "@/layouts/Base.astro";
 import Badge from "@/layouts/components/Badge.astro";
 import CallToAction from "@/layouts/components/CallToAction.astro";
 import CareerApplyForm from "@/layouts/components/CareerApplyForm.astro";
-import Faq from "@/layouts/components/Faq.astro";
 import ImageMod from "@/layouts/components/ImageMod.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
@@ -112,9 +111,6 @@ const { Content } = await render(job);
       <a href="/careers" class="btn btn-outline">← Back to Careers</a>
     </div>
   </section>
-
-  <!-- FAQ -->
-  <Faq />
 
   <!-- Call to Action -->
   <CallToAction />

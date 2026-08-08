@@ -1,0 +1,255 @@
+---
+// Infinite, mouse-scroll-driven card slider for the homepage hero diagrams.
+// Pattern follows GSAP's own "infinite card slider" demo (https://demos.gsap.com/demo/infinite-card-slider/):
+// the documented `horizontalLoop` helper (https://gsap.com/docs/v3/HelperFunctions/helpers/seamlessLoop/)
+// drives an infinitely-wrapping timeline, and the Observer plugin's onUp/onDown callbacks
+// (the pattern shown in GSAP's own Observer docs) map mouse-wheel gestures to loop.next()/previous().
+// GSAP core + Observer are loaded from the CDN (see script tags below); this component's own
+// script only supplies types via the `gsap`/`gsap-devDependency`, no bundled runtime duplicate.
+// `data-lenis-prevent` on the root is required: the site's global Lenis smooth-scroll (see
+// public/scripts/animations.js) intercepts wheel events on the whole document before they reach
+// this component's Observer instance, so without it, wheeling over the slider just scrolls the
+// page instead of advancing cards. See https://github.com/darkroomengineering/lenis#nested-scroll.
+import AwsArchitectureDiagram from "./AwsArchitectureDiagram.astro";
+import DiagramCardPlaceholder from "./DiagramCardPlaceholder.astro";
+---
+
+<script
+  is:inline
+  defer
+  src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/Observer.min.js"
+></script>
+
+<div
+  class="relative w-full max-w-280 mx-auto"
+  data-diagram-slider
+  data-lenis-prevent
+>
+  <div
+    class="overflow-hidden rounded-4xl overscroll-contain"
+    data-slider-viewport
+  >
+    <div class="flex" data-slider-track>
+      <div class="w-full shrink-0" data-slider-card>
+        <AwsArchitectureDiagram />
+      </div>
+      <div class="w-full shrink-0" data-slider-card>
+        <DiagramCardPlaceholder title="Multi-Region Failover Architecture" />
+      </div>
+      <div class="w-full shrink-0" data-slider-card>
+        <DiagramCardPlaceholder title="Containerized Microservices on EKS" />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center gap-2 mt-6" data-slider-dots>
+    <button
+      type="button"
+      class="size-2 rounded-full bg-border transition-colors"
+      data-slider-dot
+      aria-label="Go to diagram 1"
+    ></button>
+    <button
+      type="button"
+      class="size-2 rounded-full bg-border transition-colors"
+      data-slider-dot
+      aria-label="Go to diagram 2"
+    ></button>
+    <button
+      type="button"
+      class="size-2 rounded-full bg-border transition-colors"
+      data-slider-dot
+      aria-label="Go to diagram 3"
+    ></button>
+  </div>
+</div>
+
+<style>
+  [data-slider-dot][aria-current="true"] {
+    background: var(--color-primary);
+  }
+</style>
+
+<script>
+  declare const gsap: typeof import("gsap").gsap;
+  declare const Observer: typeof import("gsap/Observer").Observer;
+
+  // Verbatim GSAP helper: https://gsap.com/docs/v3/HelperFunctions/helpers/seamlessLoop/
+  function horizontalLoop(items: Element[], config: Record<string, any> = {}) {
+    let tl = gsap.timeline({
+        repeat: config.repeat,
+        paused: config.paused,
+        defaults: { ease: "none" },
+        onReverseComplete: () =>
+          tl.totalTime(tl.rawTime() + tl.duration() * 100),
+      }),
+      length = items.length,
+      startX = (items[0] as HTMLElement).offsetLeft,
+      times: number[] = [],
+      widths: number[] = [],
+      xPercents: number[] = [],
+      curIndex = 0,
+      pixelsPerSecond = (config.speed || 1) * 100,
+      snap =
+        config.snap === false
+          ? (v: number) => v
+          : gsap.utils.snap(config.snap || 1),
+      totalWidth: number,
+      curX: number,
+      distanceToStart: number,
+      distanceToLoop: number,
+      item: HTMLElement,
+      i: number;
+
+    gsap.set(items, {
+      xPercent: (i: number, el: HTMLElement) => {
+        let w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px") as string));
+        xPercents[i] = snap(
+          (parseFloat(gsap.getProperty(el, "x", "px") as string) / w) * 100 +
+            (gsap.getProperty(el, "xPercent") as number),
+        );
+        return xPercents[i];
+      },
+    });
+    gsap.set(items, { x: 0 });
+    totalWidth =
+      (items[length - 1] as HTMLElement).offsetLeft +
+      (xPercents[length - 1] / 100) * widths[length - 1] -
+      startX +
+      (items[length - 1] as HTMLElement).offsetWidth *
+        (gsap.getProperty(items[length - 1], "scaleX") as number) +
+      (parseFloat(config.paddingRight) || 0);
+
+    for (i = 0; i < length; i++) {
+      item = items[i] as HTMLElement;
+      curX = (xPercents[i] / 100) * widths[i];
+      distanceToStart = item.offsetLeft + curX - startX;
+      distanceToLoop =
+        distanceToStart + widths[i] * (gsap.getProperty(item, "scaleX") as number);
+      tl.to(
+        item,
+        {
+          xPercent: snap(((curX - distanceToLoop) / widths[i]) * 100),
+          duration: distanceToLoop / pixelsPerSecond,
+        },
+        0,
+      )
+        .fromTo(
+          item,
+          {
+            xPercent: snap(
+              ((curX - distanceToLoop + totalWidth) / widths[i]) * 100,
+            ),
+          },
+          {
+            xPercent: xPercents[i],
+            duration:
+              (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
+            immediateRender: false,
+          },
+          distanceToLoop / pixelsPerSecond,
+        )
+        .add("label" + i, distanceToStart / pixelsPerSecond);
+      times[i] = distanceToStart / pixelsPerSecond;
+    }
+
+    function toIndex(index: number, vars: Record<string, any> = {}) {
+      Math.abs(index - curIndex) > length / 2 &&
+        (index += index > curIndex ? -length : length);
+      let newIndex = gsap.utils.wrap(0, length, index),
+        time = times[newIndex];
+      if (time > tl.time() !== index > curIndex) {
+        vars.modifiers = { time: gsap.utils.wrap(0, tl.duration()) };
+        time += tl.duration() * (index > curIndex ? 1 : -1);
+      }
+      curIndex = newIndex;
+      vars.overwrite = true;
+      return tl.tweenTo(time, vars);
+    }
+
+    (tl as any).next = (vars: Record<string, any>) => toIndex(curIndex + 1, vars);
+    (tl as any).previous = (vars: Record<string, any>) => toIndex(curIndex - 1, vars);
+    (tl as any).current = () => curIndex;
+    (tl as any).toIndex = (index: number, vars: Record<string, any>) => toIndex(index, vars);
+    (tl as any).times = times;
+    tl.progress(1, true).progress(0, true);
+    if (config.reversed) {
+      tl.vars.onReverseComplete?.();
+      tl.reverse();
+    }
+    return tl as typeof tl & {
+      next: (vars?: Record<string, any>) => gsap.core.Tween;
+      previous: (vars?: Record<string, any>) => gsap.core.Tween;
+      current: () => number;
+      toIndex: (index: number, vars?: Record<string, any>) => gsap.core.Tween;
+    };
+  }
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  const root = document.querySelector<HTMLElement>("[data-diagram-slider]");
+  const viewport = root?.querySelector<HTMLElement>("[data-slider-viewport]");
+  const cards = root
+    ? Array.from(root.querySelectorAll<HTMLElement>("[data-slider-card]"))
+    : [];
+  const dots = root
+    ? Array.from(root.querySelectorAll<HTMLButtonElement>("[data-slider-dot]"))
+    : [];
+
+  if (root && viewport && cards.length) {
+    if (reduceMotion) {
+      // Fall back to native scroll-snap: no GSAP/Observer wiring, but still browsable.
+      viewport.classList.remove("overflow-hidden");
+      viewport.classList.add("overflow-x-auto", "snap-x", "snap-mandatory");
+      cards.forEach((card) => card.classList.add("snap-start"));
+      dots.forEach((dot) => (dot.tabIndex = -1));
+    } else {
+      const loop = horizontalLoop(cards, { paused: true });
+
+      const setActiveDot = () => {
+        dots.forEach((dot, i) =>
+          dot.setAttribute(
+            "aria-current",
+            i === loop.current() ? "true" : "false",
+          ),
+        );
+      };
+      setActiveDot();
+
+      const tweenVars = { duration: 0.6, ease: "power2.inOut" };
+      const goNext = () => {
+        loop.next(tweenVars);
+        setActiveDot();
+      };
+      const goPrevious = () => {
+        loop.previous(tweenVars);
+        setActiveDot();
+      };
+
+      Observer.create({
+        target: root,
+        type: "wheel",
+        preventDefault: true,
+        onUp: goPrevious,
+        onDown: goNext,
+      });
+
+      // `data-lenis-prevent` alone isn't enough here: Lenis's own prevent check reads
+      // event.composedPath() when it processes the gesture, and by then the path is empty
+      // (verified with Playwright — the page scrolled globally despite the attribute).
+      // Stopping propagation at the slider boundary keeps the wheel event from ever
+      // reaching Lenis's window-level listener; Observer's own listener is on this same
+      // element so it still receives the event before propagation is cut off.
+      root.addEventListener("wheel", (e) => e.stopPropagation());
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+          loop.toIndex(i, tweenVars);
+          setActiveDot();
+        });
+      });
+    }
+  }
+</script>

@@ -1,4 +1,5 @@
 allowBuilds:
+  '@fission-ai/openspec': false
   esbuild: true
   sharp: true
   workerd: true

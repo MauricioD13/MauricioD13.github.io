@@ -7,7 +7,7 @@ import GradientBlob from "@/layouts/components/GradientBlob.astro";
 import BrandsCarousel from "@/layouts/components/BrandsCarousel.astro";
 import OurStory from "@/layouts/components/OurStory.astro";
 import CallToAction from "@/layouts/components/CallToAction.astro";
-import DiagramCardSlider from "@/layouts/components/DiagramCardSlider.astro";
+import DiagramPanelSection from "@/layouts/components/DiagramPanelSection.astro";
 import LeadGeneration from "@/layouts/components/LeadGeneration.astro";
 import config from "@/config/config.json";
 import { getListPage } from "@/lib/contentParser.astro";
@@ -51,11 +51,6 @@ const { checklist_form_action } = config.params;
             >
               {homepageData.banner.button_secondary.label}
             </a>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="flex justify-center w-full">
-            <DiagramCardSlider />
           </div>
         </div>
       </div>
@@ -208,6 +203,10 @@ const { checklist_form_action } = config.params;
       </svg>
     </div>
   </section>
+
+  <!-- Architecture diagrams: full-bleed, must sit outside .container to pin at 100dvh/100vw -->
+  <DiagramPanelSection />
+
   <hr
     class="h-px bg-linear-to-r from-transparent from-10% via-white/50 to-90% to-transparent border-0"
   />

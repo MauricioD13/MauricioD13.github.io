@@ -1,78 +1,80 @@
 ---
-// Infinite, mouse-scroll-driven card slider for the homepage hero diagrams.
-// Pattern follows GSAP's own "infinite card slider" demo (https://demos.gsap.com/demo/infinite-card-slider/):
-// the documented `horizontalLoop` helper (https://gsap.com/docs/v3/HelperFunctions/helpers/seamlessLoop/)
-// drives an infinitely-wrapping timeline, and the Observer plugin's onUp/onDown callbacks
-// (the pattern shown in GSAP's own Observer docs) map mouse-wheel gestures to loop.next()/previous().
-// GSAP core + Observer are loaded from the CDN (see script tags below); this component's own
-// script only supplies types via the `gsap`/`gsap-devDependency`, no bundled runtime duplicate.
-// `data-lenis-prevent` on the root is required: the site's global Lenis smooth-scroll (see
-// public/scripts/animations.js) intercepts wheel events on the whole document before they reach
-// this component's Observer instance, so without it, wheeling over the slider just scrolls the
-// page instead of advancing cards. See https://github.com/darkroomengineering/lenis#nested-scroll.
+// Full-screen, scroll-pinned infinite panel section for the homepage diagrams.
+// Adapted from GSAP's "Layered pinning with infinite looping" demo
+// (https://codepen.io/GreenSock/pen/VwbywPd) and the documented `horizontalLoop` helper
+// (https://gsap.com/docs/v3/HelperFunctions/helpers/seamlessLoop/).
+//
+// The reference demo hijacks the *entire page's* native scroll boundaries to fake infinity
+// (teleporting window.scrollTo at the very top/bottom) — that only works because in the demo
+// the panels are the whole page. Here the panels are one section among several, so instead:
+// a single ScrollTrigger pins this section for a fixed scroll distance (one full loop cycle,
+// `panels.length * 100%` of the pinned viewport's own height) and scrubs the horizontalLoop
+// timeline's progress directly off ScrollTrigger's progress. When the cycle completes,
+// ScrollTrigger unpins on its own and the page continues to whatever comes next — no manual
+// wheel/scroll listeners, so it rides Lenis's synced scroll (see public/scripts/animations.js)
+// instead of fighting it, per CLAUDE.md "Frontend Animation Constraints".
 import AwsArchitectureDiagram from "./AwsArchitectureDiagram.astro";
 import DiagramCardPlaceholder from "./DiagramCardPlaceholder.astro";
 ---
 
-<script
-  is:inline
-  defer
-  src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/Observer.min.js"
-></script>
-
-<div
-  class="relative w-full max-w-280 mx-auto"
-  data-diagram-slider
-  data-lenis-prevent
->
-  <div
-    class="overflow-hidden rounded-4xl overscroll-contain"
-    data-slider-viewport
-  >
-    <div class="flex" data-slider-track>
-      <div class="w-full shrink-0" data-slider-card>
+<section class="relative" data-diagram-panels>
+  <div class="relative h-dvh w-full overflow-hidden" data-panels-pin>
+    <div class="flex h-full" data-panels-track>
+      <div
+        class="flex h-full w-full shrink-0 items-center justify-center p-6 md:p-12"
+        data-panel
+      >
         <AwsArchitectureDiagram />
       </div>
-      <div class="w-full shrink-0" data-slider-card>
+      <div
+        class="flex h-full w-full shrink-0 items-center justify-center p-6 md:p-12"
+        data-panel
+      >
         <DiagramCardPlaceholder title="Multi-Region Failover Architecture" />
       </div>
-      <div class="w-full shrink-0" data-slider-card>
+      <div
+        class="flex h-full w-full shrink-0 items-center justify-center p-6 md:p-12"
+        data-panel
+      >
         <DiagramCardPlaceholder title="Containerized Microservices on EKS" />
       </div>
     </div>
-  </div>
 
-  <div class="flex justify-center gap-2 mt-6" data-slider-dots>
-    <button
-      type="button"
-      class="size-2 rounded-full bg-border transition-colors"
-      data-slider-dot
-      aria-label="Go to diagram 1"
-    ></button>
-    <button
-      type="button"
-      class="size-2 rounded-full bg-border transition-colors"
-      data-slider-dot
-      aria-label="Go to diagram 2"
-    ></button>
-    <button
-      type="button"
-      class="size-2 rounded-full bg-border transition-colors"
-      data-slider-dot
-      aria-label="Go to diagram 3"
-    ></button>
+    <div
+      class="absolute bottom-6 left-0 z-10 flex w-full justify-center gap-2"
+      data-panel-dots
+    >
+      <button
+        type="button"
+        class="size-2 rounded-full bg-border transition-colors"
+        data-panel-dot
+        aria-label="Go to diagram 1"
+      ></button>
+      <button
+        type="button"
+        class="size-2 rounded-full bg-border transition-colors"
+        data-panel-dot
+        aria-label="Go to diagram 2"
+      ></button>
+      <button
+        type="button"
+        class="size-2 rounded-full bg-border transition-colors"
+        data-panel-dot
+        aria-label="Go to diagram 3"
+      ></button>
+    </div>
   </div>
-</div>
+</section>
 
 <style>
-  [data-slider-dot][aria-current="true"] {
+  [data-panel-dot][aria-current="true"] {
     background: var(--color-primary);
   }
 </style>
 
 <script>
   declare const gsap: typeof import("gsap").gsap;
-  declare const Observer: typeof import("gsap/Observer").Observer;
+  declare const ScrollTrigger: typeof import("gsap/ScrollTrigger").ScrollTrigger;
 
   // Verbatim GSAP helper: https://gsap.com/docs/v3/HelperFunctions/helpers/seamlessLoop/
   function horizontalLoop(items: Element[], config: Record<string, any> = {}) {
@@ -182,6 +184,7 @@ import DiagramCardPlaceholder from "./DiagramCardPlaceholder.astro";
       previous: (vars?: Record<string, any>) => gsap.core.Tween;
       current: () => number;
       toIndex: (index: number, vars?: Record<string, any>) => gsap.core.Tween;
+      times: number[];
     };
   }
 
@@ -189,65 +192,71 @@ import DiagramCardPlaceholder from "./DiagramCardPlaceholder.astro";
     "(prefers-reduced-motion: reduce)",
   ).matches;
 
-  const root = document.querySelector<HTMLElement>("[data-diagram-slider]");
-  const viewport = root?.querySelector<HTMLElement>("[data-slider-viewport]");
-  const cards = root
-    ? Array.from(root.querySelectorAll<HTMLElement>("[data-slider-card]"))
+  const section = document.querySelector<HTMLElement>("[data-diagram-panels]");
+  const pinWrap = section?.querySelector<HTMLElement>("[data-panels-pin]");
+  const track = section?.querySelector<HTMLElement>("[data-panels-track]");
+  const panels = section
+    ? Array.from(section.querySelectorAll<HTMLElement>("[data-panel]"))
     : [];
-  const dots = root
-    ? Array.from(root.querySelectorAll<HTMLButtonElement>("[data-slider-dot]"))
+  const dotsWrap = section?.querySelector<HTMLElement>("[data-panel-dots]");
+  const dots = section
+    ? Array.from(section.querySelectorAll<HTMLButtonElement>("[data-panel-dot]"))
     : [];
 
-  if (root && viewport && cards.length) {
+  if (section && pinWrap && track && panels.length) {
     if (reduceMotion) {
-      // Fall back to native scroll-snap: no GSAP/Observer wiring, but still browsable.
-      viewport.classList.remove("overflow-hidden");
-      viewport.classList.add("overflow-x-auto", "snap-x", "snap-mandatory");
-      cards.forEach((card) => card.classList.add("snap-start"));
-      dots.forEach((dot) => (dot.tabIndex = -1));
+      // No pin, no scrub: stack panels in normal vertical flow so the content is still
+      // fully reachable via ordinary scrolling.
+      pinWrap.classList.remove("h-dvh", "overflow-hidden");
+      pinWrap.classList.add("h-auto");
+      track.classList.remove("flex");
+      track.classList.add("flex", "flex-col", "gap-16", "py-16");
+      panels.forEach((panel) => {
+        panel.classList.remove("h-full", "shrink-0");
+        panel.classList.add("h-auto");
+      });
+      dotsWrap?.classList.add("hidden");
     } else {
-      const loop = horizontalLoop(cards, { paused: true });
+      gsap.registerPlugin(ScrollTrigger);
 
-      const setActiveDot = () => {
+      const loop = horizontalLoop(panels, { paused: true });
+
+      const setActiveDot = (progress: number) => {
+        const index = Math.min(
+          panels.length - 1,
+          Math.floor(progress * panels.length),
+        );
         dots.forEach((dot, i) =>
-          dot.setAttribute(
-            "aria-current",
-            i === loop.current() ? "true" : "false",
-          ),
+          dot.setAttribute("aria-current", i === index ? "true" : "false"),
         );
       };
-      setActiveDot();
+      setActiveDot(0);
 
-      const tweenVars = { duration: 0.6, ease: "power2.inOut" };
-      const goNext = () => {
-        loop.next(tweenVars);
-        setActiveDot();
-      };
-      const goPrevious = () => {
-        loop.previous(tweenVars);
-        setActiveDot();
-      };
-
-      Observer.create({
-        target: root,
-        type: "wheel",
-        preventDefault: true,
-        onUp: goPrevious,
-        onDown: goNext,
+      const trigger = ScrollTrigger.create({
+        trigger: pinWrap,
+        start: "top top",
+        end: `+=${panels.length * 100}%`,
+        pin: true,
+        scrub: true,
+        onUpdate: (self) => {
+          loop.progress(self.progress);
+          setActiveDot(self.progress);
+        },
       });
-
-      // `data-lenis-prevent` alone isn't enough here: Lenis's own prevent check reads
-      // event.composedPath() when it processes the gesture, and by then the path is empty
-      // (verified with Playwright — the page scrolled globally despite the attribute).
-      // Stopping propagation at the slider boundary keeps the wheel event from ever
-      // reaching Lenis's window-level listener; Observer's own listener is on this same
-      // element so it still receives the event before propagation is cut off.
-      root.addEventListener("wheel", (e) => e.stopPropagation());
 
       dots.forEach((dot, i) => {
         dot.addEventListener("click", () => {
-          loop.toIndex(i, tweenVars);
-          setActiveDot();
+          const targetProgress = loop.times[i] / loop.duration();
+          const targetY =
+            trigger.start + (trigger.end - trigger.start) * targetProgress;
+          const win = window as unknown as {
+            lenis?: { scrollTo: (target: number, opts?: Record<string, any>) => void };
+          };
+          if (win.lenis) {
+            win.lenis.scrollTo(targetY, { duration: 1 });
+          } else {
+            window.scrollTo({ top: targetY, behavior: "smooth" });
+          }
         });
       });
     }

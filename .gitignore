@@ -34,3 +34,6 @@ pnpm-workspace.yaml
 *.png
 *.jpeg
 .playwright-mcp/**
+test-results/
+playwright-report/
+blob-report/

@@ -116,8 +116,17 @@ import { sporeCanvas } from "./particleCanvas.js";
 
   function init() {
     gsap.registerPlugin(ScrollTrigger);
-    // Init Lenis smooth scroll
-    new Lenis({ autoRaf: true });
+
+    // Init Lenis smooth scroll, synced to GSAP's own ticker (not autoRaf) so ScrollTrigger
+    // (pin/scrub/snap) tracks scroll position every frame instead of drifting behind Lenis's
+    // easing. Exposed on window so any scroll-driven component can call lenis.scrollTo(...)
+    // for programmatic navigation that stays consistent with the smooth-scroll feel.
+    // See CLAUDE.md "Frontend Animation Constraints".
+    const lenis = new Lenis();
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+    window.lenis = lenis;
 
     updateTrustedPartners();
     sporesEffect();

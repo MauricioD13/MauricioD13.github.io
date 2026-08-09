@@ -5,9 +5,7 @@
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
-    "logo": "/images/logo.svg",
-    "logo_width": "160",
-    "logo_height": "45",
+    "logo": "/images/LogoTribuOps.png",
     "logo_text": "TribuOps"
   },
   "settings": {

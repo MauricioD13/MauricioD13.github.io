@@ -5,36 +5,49 @@ import ImageMod from "./ImageMod.astro";
 const { src }: { src?: string } = Astro.props;
 const {
   logo,
-  logo_width,
-  logo_height,
   logo_text,
   title,
 }: {
   logo: string;
-  logo_width: any;
-  logo_height: any;
   logo_text: string;
   title: string;
 } = config.site;
+
+const logoSrc = src ? src : logo;
+
+// Derive the mark's true aspect ratio from the source file rather than a hand-typed
+// width/height pair — this logo is a tall, narrow icon (not a wide wordmark lockup),
+// and a mismatched fixed box stretched/squashed it. Display size is controlled purely
+// by the `class` below (responsive height, w-auto), so it always scales correctly.
+let aspectRatio = 1;
+if (logoSrc) {
+  const images = import.meta.glob<{ default: { width: number; height: number } }>(
+    "/public/images/**/*.{jpeg,jpg,png,gif,svg}",
+  );
+  const mod = images[`/public${logoSrc}`];
+  if (mod) {
+    const { default: meta } = await mod();
+    aspectRatio = meta.width / meta.height;
+  }
+}
+
+// Generate the raster at 2x the largest displayed height (see class below) for crispness
+// on high-DPI screens; CSS scales it down to the actual responsive display size.
+const renderHeight = 80;
+const renderWidth = Math.round(renderHeight * aspectRatio);
 ---
 
-<a href="/" class="navbar-brand inline-block">
+<a href="/" class="navbar-brand inline-flex items-center">
   {
-    src || logo ? (
-      <>
-        <ImageMod
-          src={src ? src : logo}
-          class={`inline-block `}
-          width={logo_width.replace("px", "") * 2}
-          height={logo_height.replace("px", "") * 2}
-          alt={title}
-          style={{
-            height: logo_height.replace("px", "") + "px",
-            width: logo_width.replace("px", "") + "px",
-          }}
-          format="webp"
-        />
-      </>
+    logoSrc ? (
+      <ImageMod
+        src={logoSrc}
+        class="h-8 w-auto md:h-10"
+        width={renderWidth}
+        height={renderHeight}
+        alt={title}
+        format="webp"
+      />
     ) : logo_text ? (
       logo_text
     ) : (

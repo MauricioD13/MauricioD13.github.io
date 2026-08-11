@@ -74,6 +74,38 @@ const aboutCollection = defineCollection({
         }),
       )
       .optional(),
+    experience: z
+      .object({
+        enable: z.boolean(),
+        badge: z.string().optional(),
+        title: z.string(),
+        subtitle: z.string().optional(),
+        items: z.array(
+          z.object({
+            title: z.string(),
+            company: z.string(),
+            period: z.string(),
+            description: z.string(),
+            technologies: z.array(z.string()).optional(),
+          }),
+        ),
+      })
+      .optional(),
+    education: z
+      .object({
+        enable: z.boolean(),
+        badge: z.string().optional(),
+        title: z.string(),
+        subtitle: z.string().optional(),
+        items: z.array(
+          z.object({
+            title: z.string(),
+            institution: z.string(),
+            date: z.string(),
+          }),
+        ),
+      })
+      .optional(),
   }),
 });
 

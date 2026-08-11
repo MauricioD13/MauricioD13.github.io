@@ -1,0 +1,144 @@
+---
+import Badge from "@/layouts/components/Badge.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import type { TimelineItem } from "@/types";
+
+interface Props {
+  badge?: string;
+  title: string;
+  subtitle?: string;
+  items: TimelineItem[];
+}
+
+const { badge, title, subtitle, items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <section class="section relative isolate" data-timeline-section>
+      <div class="container">
+        <div class="section-container">
+          <div class="section-intro centralize">
+            {badge && <Badge title={badge} />}
+            <h2 class="title hasHighlight" set:html={markdownify(title)} />
+            {subtitle && <p class="subtitle">{subtitle}</p>}
+          </div>
+          <div class="section-content">
+            <div class="relative max-w-3xl mx-auto" data-timeline-track>
+              <div
+                class="absolute left-3 top-0 bottom-0 w-px bg-primary/20 origin-top"
+                data-timeline-line
+              />
+              <ul class="flex flex-col gap-10">
+                {items.map((item) => (
+                  <li class="relative pl-12" data-timeline-item>
+                    <span
+                      class="absolute left-3 top-1.5 size-3 -translate-x-1/2 rounded-full bg-primary ring-4 ring-body"
+                      data-timeline-dot
+                    />
+                    <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+                      <h3 class="text-h6 font-bold text-white">
+                        {item.title}
+                      </h3>
+                      {item.subtitle && (
+                        <span class="text-text-dark">{item.subtitle}</span>
+                      )}
+                    </div>
+                    <p class="text-sm text-primary font-medium mb-3">
+                      {item.period}
+                    </p>
+                    {item.description && (
+                      <p class="text-text mb-4">{item.description}</p>
+                    )}
+                    {item.technologies && item.technologies.length > 0 && (
+                      <ul class="flex flex-wrap gap-2">
+                        {item.technologies.map((tech) => (
+                          <li class="text-xs text-text-light bg-white/6 border border-border rounded-full px-3 py-1">
+                            {tech}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  // gsap/ScrollTrigger are loaded globally via CDN <script> in Base.astro and already
+  // registered + synced to the shared Lenis instance in public/scripts/animations.js
+  // (see CLAUDE.md "Frontend Animation Constraints") — this component only builds
+  // per-item gsap.timeline()s and hangs them off ScrollTrigger, it never touches
+  // scroll/wheel events itself.
+  declare const gsap: typeof import("gsap").gsap;
+  declare const ScrollTrigger: typeof import("gsap/ScrollTrigger").ScrollTrigger;
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  document
+    .querySelectorAll<HTMLElement>("[data-timeline-section]")
+    .forEach((section) => {
+      const track = section.querySelector<HTMLElement>("[data-timeline-track]");
+      const line = section.querySelector<HTMLElement>("[data-timeline-line]");
+      const items = Array.from(
+        section.querySelectorAll<HTMLElement>("[data-timeline-item]"),
+      );
+      if (!track || !items.length) return;
+
+      if (reduceMotion) {
+        gsap.set(items, { opacity: 1, y: 0 });
+        if (line) gsap.set(line, { scaleY: 1 });
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (line) {
+        gsap.fromTo(
+          line,
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: track,
+              start: "top 75%",
+              end: "bottom 75%",
+              scrub: true,
+            },
+          },
+        );
+      }
+
+      items.forEach((item) => {
+        const dot = item.querySelector<HTMLElement>("[data-timeline-dot]");
+
+        // A gsap.timeline() sequences the dot pop-in and the card reveal as one
+        // unit per entry, played once the entry scrolls into view.
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        tl.from(item, { opacity: 0, y: 40, duration: 0.6, ease: "power2.out" });
+        if (dot) {
+          tl.from(
+            dot,
+            { scale: 0, duration: 0.4, ease: "back.out(2)" },
+            "-=0.3",
+          );
+        }
+      });
+    });
+</script>

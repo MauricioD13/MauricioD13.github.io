@@ -7,6 +7,7 @@ import GradientBlob from "@/layouts/components/GradientBlob.astro";
 import ImageMod from "@/layouts/components/ImageMod.astro";
 import OurStory from "@/layouts/components/OurStory.astro";
 import TeamCard from "@/layouts/components/TeamCard.astro";
+import Timeline from "@/layouts/components/Timeline.astro";
 import { getListPage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import Features from "@/partials/Features.astro";
@@ -247,6 +248,40 @@ const aboutData: About = about.data;
           </div>
         </div>
       </section>
+    )
+  }
+
+  <!-- Experience -->
+  {
+    aboutData.experience?.enable && (
+      <Timeline
+        badge={aboutData.experience.badge}
+        title={aboutData.experience.title}
+        subtitle={aboutData.experience.subtitle}
+        items={aboutData.experience.items.map((item) => ({
+          title: item.title,
+          subtitle: item.company,
+          period: item.period,
+          description: item.description,
+          technologies: item.technologies,
+        }))}
+      />
+    )
+  }
+
+  <!-- Education -->
+  {
+    aboutData.education?.enable && (
+      <Timeline
+        badge={aboutData.education.badge}
+        title={aboutData.education.title}
+        subtitle={aboutData.education.subtitle}
+        items={aboutData.education.items.map((item) => ({
+          title: item.title,
+          subtitle: item.institution,
+          period: item.date,
+        }))}
+      />
     )
   }
 

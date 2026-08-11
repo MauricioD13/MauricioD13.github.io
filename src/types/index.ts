@@ -65,3 +65,12 @@ export interface OurFeaturesSection {
   subtitle?: string;
   items: FeatureItem[];
 }
+
+export interface TimelineItem {
+  title: string;
+  /** Company (experience) or institution (education) */
+  subtitle?: string;
+  period: string;
+  description?: string;
+  technologies?: string[];
+}

@@ -59,10 +59,13 @@ const aboutCollection = defineCollection({
         z.object({
           logo: z.string(),
           title: z.string(),
+          description: z.string(),
           is_starred: z.boolean(),
         }),
       ),
     }),
+    skills_title: z.string().optional(),
+    skills_subtitle: z.string().optional(),
     skills: z
       .array(
         z.object({

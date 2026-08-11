@@ -3,9 +3,10 @@ import ImageMod from "@/layouts/components/ImageMod.astro";
 interface Props {
   logo: string;
   title: string;
+  description?: string;
   is_starred: boolean;
 }
-const { logo, title, is_starred } = Astro.props;
+const { logo, title, description, is_starred } = Astro.props;
 ---
 
 <div
@@ -13,9 +14,7 @@ const { logo, title, is_starred } = Astro.props;
 >
   <ImageMod src={logo} alt={`${title} icon`} class="mb-6 mx-auto" />
   <h3 class="text-h5-sm font-bold mb-4 text-center">{title}</h3>
-  <p class="text-center">
-    Visualize how teams are staffed & what resources are available across.
-  </p>
+  {description && <p class="text-center">{description}</p>}
   {
     [
       "top-0 left-0 -translate-x-1/2 -translate-y-1/2",

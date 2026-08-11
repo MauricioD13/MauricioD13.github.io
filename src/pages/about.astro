@@ -254,8 +254,8 @@ const aboutData: About = about.data;
   {
     aboutData.skills && (
       <SkillsShowcase
-        title="Tools & <strong>Technologies</strong>"
-        content="What I use day to day to build and secure cloud infrastructure."
+        title={aboutData.skills_title}
+        content={aboutData.skills_subtitle}
         skills={aboutData.skills}
       />
     )

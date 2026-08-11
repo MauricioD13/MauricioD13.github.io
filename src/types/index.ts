@@ -51,6 +51,8 @@ export interface SocialType {
 export interface FeatureItem {
   logo: string;
   title: string;
+  /** Used by about collection (core_values); homepage's our_features doesn't set this yet */
+  description?: string;
   is_starred: boolean;
 }
 

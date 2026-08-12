@@ -1,12 +1,12 @@
 {
   "main": [
     {
-      "name": "Projects",
-      "url": "/projects"
+      "name":"Home",
+      "url":"/"
     },
     {
-      "name": "Services",
-      "url": "/services"
+      "name": "Projects",
+      "url": "/projects"
     },
     {
       "name": "Blog",
@@ -35,10 +35,6 @@
       "url": "/about"
     },
     {
-      "name": "Features",
-      "url": "/features"
-    },
-    {
       "name": "Contact",
       "url": "/contact"
     }
@@ -49,16 +45,8 @@
       "url": "/projects"
     },
     {
-      "name": "Elements",
-      "url": "/elements"
-    },
-    {
       "name": "Blog",
       "url": "/blog"
-    },
-    {
-      "name": "Careers",
-      "url": "/careers"
     },
     {
       "name": "Integrations",

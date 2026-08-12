@@ -189,11 +189,17 @@ const {
     successEl?.classList.add("hidden");
     errorEl?.classList.add("hidden");
 
+    const contactApiUrl = import.meta.env.PUBLIC_CONTACT_API_URL;
+    if (!contactApiUrl) {
+      showError("Contact form is not configured. Please try again later.");
+      return;
+    }
+
     const formData = new FormData(form);
     setLoading(true);
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(contactApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

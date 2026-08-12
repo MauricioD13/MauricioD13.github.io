@@ -95,7 +95,7 @@ single_testimonial:
     company: "Growing Tech Co."
 
 growth_process:
-  enable: true
+  enable: false
   title: 'Your 3-Step Path to a <strong class="italic">Secure, Well-Run Cloud</strong>'
   items:
     - logo: "/images/value-proposition/values-icon-2.svg"
@@ -120,34 +120,14 @@ integrations:
       alt: "aws"
     - image: "/images/integrations/terraform.png"
       alt: "terraform"
-    - image: "/images/integrations/docker.png"
+    - image: "/images/integrations/docker.svg"
       alt: "docker"
-    - image: "/images/integrations/github.png"
+    - image: "/images/integrations/github.svg"
       alt: "github"
-    - image: "/images/integrations/kubernetes.png"
+    - image: "/images/integrations/kubernetes.svg"
       alt: "kubernetes"
-    - image: "/images/integrations/grafana.png"
+    - image: "/images/integrations/grafana.svg"
       alt: "grafana"
-    - image: "/images/integrations/azure.png"
+    - image: "/images/integrations/azure.svg"
       alt: "azure"
-    - image: "/images/integrations/gcp.png"
-      alt: "gcp"
-
-lead_generation:
-  enable: true
-  title: "Free Resource for <strong>Cloud-Native Businesses</strong>"
-  subtitle: 'The Cloud Security Checklist: 5 Misconfigurations Putting Your AWS Environment At Risk.'
-  content: |
-    Did you know most cloud security incidents come from misconfiguration, not sophisticated attacks?
-
-    Download our <strong>FREE</strong> Checklist to identify the most common IAM, network, and workload risks in your cloud environment — and how to fix them.
-  list:
-    - "<strong>The IAM Audit:</strong> A step-by-step guide to finding over-privileged access."
-    - "<strong>Quick-Win Hardening:</strong> 3 changes you can make this week to reduce your attack surface."
-    - "<strong>The Ops Check:</strong> Where manual processes are creating security risk."
-  image: "/images/ebook.png"
-  button:
-    enable: true
-    label: "Get Free Checklist"
-    link: "/contact"
 ---

@@ -13,7 +13,6 @@
   },
   "params": {
     "contact_form_action": "#",
-    "checklist_form_action": "#",
     "apply_form_action": "#",
     "copyright": "Copyright &copy; 2026 <strong>TribuOps</strong> — Mauricio Cuello. All Rights Reserved",
     "footer_tagline": "Empowering IT teams through intelligent automation.",

@@ -235,20 +235,6 @@ const homepageCollection = defineCollection({
       title: z.string(),
       items: z.array(z.object({ image: z.string(), alt: z.string() })),
     }),
-    lead_generation: z.object({
-      enable: z.boolean(),
-      badge: z.string().optional(),
-      title: z.string(),
-      subtitle: z.string(),
-      content: z.string(),
-      list: z.array(z.string()),
-      image: z.string(),
-      button: z.object({
-        enable: z.boolean(),
-        label: z.string(),
-        link: z.string(),
-      }),
-    }),
   }),
 });
 

@@ -23,3 +23,34 @@ The card slider has several slides, but the scroll croll is not ready
 - The global scroll is messing with the scroll of the card slider, when I scroll down the transition is not good
 [Tools]
 - Use playwright to verify this behavior 
+
+
+[context]
+I want to change the card slider and use the infite card slider, here is the example: https://demos.gsap.com/demo/infinite-looped-panels/ 
+The goal is to create a infinite slider that mixes well with the main page when scrolling therefore, when I scroll down the diagram shall fill the screen (with responsive design) and the slide shall pass between them when I scroll down, when the slides finish the it shall continue to the bottom of the page.
+[Tasks]
+- Search for the infinite looped panels, understand how it work using the skills of GSAP
+- Look if the scroll component is compatible with the type of change that is going to be implemented, ask the user if it don't
+- Write the code and implement the change
+- Verify with playwright that the change was implemented correctly, the topics to look are: correcto scroll movement, correct placement of the component, and responsive
+- If all is verify correctly commit the changes.
+
+
+[context]
+I'm editing the about page, but there are several error that need to be fixed, the page is render by sing the content in the about.md but some of the elements are not being render and other are not render but not controlled (at least the content) by the md file
+- Is not neccesary that all the control is in the same markdown, if the control is from other file tell the user to decide in that case that is the best course of action
+[Tasks]
+- Gather context from the files involve in the process of rendering the page about, like the astro files files and markdown files
+- The section Tools & Technologies are not the markdown but is being rendered
+- The section skills is in the markdown but not being rendered
+- In the section Security-First, Build to Last the text under each box is not controlled by the markdown
+
+[context]
+The about section that is in the path "/about" has to be extended to fit more information about myself. The goal is that this section is like a CV, as it is right now it has only the profile description and the skills, I want to extend to have education and job experiences.
+[Tasks]
+- Gather context of the about page that is being rendered and the about.md file that constructs the page
+- Create a Experience sections in the about page where I can add each job experience with title, company, period of time, description and technoligies, it has to be extendable, for example, when I have a new job then I only need to create another entry in the markdown file
+- The job experiences section has to be build using this component https://gsap.com/resources/getting-started/timelines/
+- The same goes to education section in the about page, in this case each entry has title, institution, and date 
+- Verify that the page is working and then commit the changes after user approval
+- 

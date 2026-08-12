@@ -358,67 +358,6 @@ const projectsCollection = defineCollection({
   }),
 });
 
-const careersCollection = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/careers" }),
-  schema: z.object({
-    ...commonFields,
-    // index-level fields
-    page_header: z.object({ title: z.string() }).optional(),
-    gallery: z
-      .object({
-        enable: z.boolean(),
-        items: z.array(
-          z.object({
-            src: z.string(),
-            alt: z.string(),
-            class: z.string().optional(),
-          }),
-        ),
-      })
-      .optional(),
-    what_we_offer: z
-      .object({
-        enable: z.boolean(),
-        title: z.string(),
-        subtitle: z.string(),
-        offers: z
-          .array(
-            z.object({
-              logo: z.string(),
-              title: z.string(),
-              list: z.array(z.string()).optional(),
-            }),
-          )
-          .optional(),
-      })
-      .optional(),
-    staff_testimonials: z
-      .object({
-        enable: z.boolean(),
-        title: z.string(),
-        items: z.array(
-          z.object({
-            quote: z.string(),
-            avatar: z.string(),
-            name: z.string(),
-            designation: z.string(),
-          }),
-        ),
-      })
-      .optional(),
-    open_positions: z.object({ enable: z.boolean() }).optional(),
-    // individual job fields
-    type: z.string().optional(),
-    location: z.string().optional(),
-    banner_image: z.string().optional(),
-    job_info: z
-      .array(
-        z.object({ label: z.string(), value: z.string(), icon: z.string() }),
-      )
-      .optional(),
-  }),
-});
-
 const integrationsCollection = defineCollection({
   loader: glob({ pattern: "**/-*.{md,mdx}", base: "src/content/integrations" }),
   schema: z.object({
@@ -506,7 +445,6 @@ export const collections = {
   homepage: homepageCollection,
   features: featuresCollection,
   projects: projectsCollection,
-  careers: careersCollection,
   integrations: integrationsCollection,
   ctaSection: ctaSectionCollection,
   brandsSection: brandsSectionCollection,

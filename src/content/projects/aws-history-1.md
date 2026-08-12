@@ -10,7 +10,6 @@ image: "/images/projects/aws-history-1/aws-three-tier-arch.jpg"
 thumbnail: "/images/projects/aws-history-1/aws-three-tier-arch.jpg"
 
 badge: "Cloud Administration"
-logo: "/images/brands/pingdom-logo-svg-150px.svg"
 company: "Client (NDA)"
 
 client_info:

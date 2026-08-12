@@ -6,7 +6,7 @@ image: ""
 draft: false
 
 page_header:
-  title: "Seamlessly Connect With <strong>Your Favorite Tools</strong>"
+  title: "Technologies and Tools"
 
 integrations:
   enable: true

@@ -1,8 +1,8 @@
 # build output
 dist/
 .output/
-.json/
 .vercel
+.wrangler/
 
 # dependencies
 node_modules/
@@ -18,21 +18,18 @@ package-lock.json
 # environment variables
 .env
 .env.production
+.env*.local
 
 # macOS-specific files
 .DS_Store
 
 # ignore .astro directory
 .astro
-.claude
+.claude/settings.local.json
 # ide
 .idea/
 
 *.mp4
-pnpm-lock.yaml
-pnpm-workspace.yaml
-*.png
-*.jpeg
 .playwright-mcp/**
 test-results/
 playwright-report/

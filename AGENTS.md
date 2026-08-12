@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-**Automark** — an Astro 7 + Tailwind CSS 4 marketing site template for GoHighLevel (GHL) SaaS resellers, with a Stripe subscription checkout flow. Content is authored as Markdown/MDX and managed via the Sitepins git-based CMS. Deployed as a Vercel serverless app (adapter is required — several API routes are server-rendered, not static).
+**Automark** — an Astro 7 + Tailwind CSS 4 marketing site template. Content is authored as Markdown/MDX and managed via the Sitepins git-based CMS. The site builds to fully static output (no SSR adapter, no server-rendered API routes) — the contact form is the only form that submits data, and it POSTs to an externally-hosted endpoint (see `PUBLIC_CONTACT_API_URL` below), not a route in this repo. This makes the build deployable to any static host (Vercel, Cloudflare Pages/Workers, GitHub Pages, a container on a VPS, etc.).
 
 ## Commands
 
@@ -38,7 +38,7 @@ There is no test suite in this repo. `astro check` is the primary correctness ga
 
 ### Config files (`src/config/`)
 
-- `config.json` — site title, base URL, GHL/Stripe-adjacent form action placeholders, footer/metadata.
+- `config.json` — site title, base URL, form action placeholders, footer/metadata.
 - `menu.json`, `social.json` — nav and social links.
 - `theme.json` — source of truth for the generated theme CSS (see above).
 
@@ -77,24 +77,16 @@ Note `@/*` maps to `src/*`, not `src/layouts/*` — but most reusable UI actuall
 - `src/pages/[regular].astro` — catch-all dynamic route rendering any entry in the `pages` collection (legal pages, elements showcase) through a shared PageHeader + Content layout. Add a new generic content page by dropping a `.md`/`.mdx` file in `src/content/pages/`, not by adding a new `.astro` route.
 - `src/content/pages/elements.mdx` (served at **`/elements`** — there is no `/resources` route in this repo) is a live showcase/reference of every available shortcode (`Button`, `Notice`, `Tabs`/`Tab`, `Accordion`, `Video`) plus plain Markdown constructs (headings, lists, code blocks, tables, quotes, images). Check this page first when unsure what MDX components exist or how to invoke them.
 
-### GoHighLevel + Stripe integration (`src/pages/api/`)
+### Contact form (`src/pages/contact.astro`)
 
-Three server-rendered API routes (`export const prerender = false`) integrate GHL CRM and Stripe billing; all require an SSR adapter (Vercel is configured in `astro.config.mjs`):
-
-- **`/api/lead`** — captures a lead, tags GHL contact `website-lead-generation`.
-- **`/api/contact`** — upserts a GHL contact, tags `website-contact-form`, and pushes the message into both the GHL Conversations tab and a contact Note.
-- **`/api/checkout`** — upserts a GHL contact tagged `checkout-initiated`, then creates a Stripe subscription Checkout Session (monthly/yearly).
-- **`/api/webhooks/stripe`** — verifies the Stripe signature, and on `checkout.session.completed` upserts the GHL contact with tag `paid-customer` and a custom field `price` (the GHL custom field's **Unique Key** must literally be `price` — see comment in `stripe.ts`).
-
-All three call the GHL REST API directly via `fetch` (no SDK) with `Version: 2021-07-28`; GHL failures are logged but intentionally don't fail the surrounding request (e.g. checkout still proceeds if GHL is down). Required env vars: `GHL_API_KEY`, `GHL_LOCATION_ID`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` (see `.env.example`).
+There are no server-rendered API routes in this repo — GHL CRM and Stripe billing integrations (lead capture, contact upsert, checkout, and the Stripe webhook) have been removed. The contact form on `/contact` is the only form still wired up: it POSTs JSON (`name`, `email`, `phone`, `message`) client-side to `import.meta.env.PUBLIC_CONTACT_API_URL`, an absolute URL pointing at an externally-hosted endpoint (not part of this deployment). Set `PUBLIC_CONTACT_API_URL` in `.env` (see `.env.example`); the form shows a config error if it's unset.
 
 ### Agent skills (`.agents/skills/`)
 
-This repo ships its own skill docs for GoHighLevel, Stripe, and Astro conventions — consult them before making non-trivial changes in those areas:
+This repo ships its own skill doc for Astro conventions — consult it before making non-trivial changes there:
 - `.agents/skills/astro/SKILL.md`
-- `.agents/skills/gohighlevel/SKILL.md`
-- `.agents/skills/stripe-best-practices/SKILL.md` (+ `references/` for billing, connect, payments, security, treasury)
-- `.agents/skills/stripe-projects/SKILL.md`
+
+The `gohighlevel` and `stripe-*` skill docs under `.agents/skills/` predate the removal of the in-repo GHL/Stripe API routes and no longer apply to this codebase.
 
 ### Additional component in scroll
 

@@ -87,6 +87,10 @@ The overall pipeline works like this:
 4. Metabase queries the S3 buckets through AWS Athena
 5. Metabase's BI layer turns that raw data into something people can actually explore
 
+##### Automating deployment
+
+Manually zipping and uploading Python code to Lambda every time I made a change wasn't sustainable as the number of workflows grew, so I set up a CD pipeline using GitHub Actions to handle deployments. Each pipeline was scoped to run only when changes were made to the directory representing its corresponding Lambda function — so updating the sales analysis report, for instance, wouldn't trigger a redeploy of the quotations one. This kept deployments fast and isolated, and meant I could iterate on one report without worrying about breaking or redeploying the others.
+
 <img src="/images/projects/serverless-data-pipeline/final_reporting.svg" alt="Final reporting" width="900" class="mx-auto" />
 
 #### Conclusion
